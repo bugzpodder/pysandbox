@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script type="importmap">
+            { "imports": {
+                "polyscript": "https://esm.sh/polyscript@0.3.1/"
+            } }
+          </script>
+    </head>
+    <body>
+        <script type="module">
+            import {PyWorkerSandbox} from "../dist/index.esm.js";
+            const sandbox = new PyWorkerSandbox({ secure: true});
+            await sandbox.init();
+            try {
+                await sandbox.exec("import js; js.document.getElementById('out').innerText = 'fail';");
+            } catch (e) {
+                await sandbox.exec("import js; js.display('success', 'out', 'text/plain');");
+            }
+        </script>
+        <div id="out"></div>
+    </body>
+</html>

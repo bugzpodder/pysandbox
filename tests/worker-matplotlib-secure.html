@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <script type="importmap">
+            { "imports": {
+                "polyscript": "https://esm.sh/polyscript@0.3.1/"
+            } }
+          </script>
+    </head>
+    <body>
+        <script type="module">
+            import {PyWorkerSandbox} from "../dist/index.esm.js";
+            const sandbox = new PyWorkerSandbox({packages: ["matplotlib", "numpy"], secure: true});
+            await sandbox.init();
+            await sandbox.exec(`import matplotlib.pyplot as plt
+import numpy as np
+import pysandbox
+pysandbox._target.target = "out"
+
+plt.figure()
+
+plt.style.use('_mpl-gallery')
+
+# make data
+x = np.linspace(0, 10, 100)
+y = 4 + 2 * np.sin(2 * x)
+
+# plot
+fig, ax = plt.subplots()
+
+ax.plot(x, y, linewidth=2.0)
+
+ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
+       ylim=(0, 8), yticks=np.arange(1, 8))
+
+pysandbox.display(plt)
+`);
+        </script>
+        <div id="out"></div>
+    </body>
+</html>

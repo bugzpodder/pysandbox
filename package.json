@@ -1,0 +1,44 @@
+{
+  "name": "pysandbox",
+  "version": "0.1.0",
+  "description": "JS pyodide sandbox",
+  "files": [
+    "dist/*"
+  ],
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bugzpodder/pysandbox.git"
+  },
+  "keywords": [
+    "polyscript",
+    "pyodide",
+    "pyscript"
+  ],
+  "author": "Jack Zhao",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/bugzpodder/pysandbox/issues"
+  },
+  "homepage": "https://github.com/bugzpodder/pysandbox",
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "serve": "python serve.py"
+  },
+  "devDependencies": {
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "polyscript": "^0.3.1"
+  }
+}
