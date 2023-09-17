@@ -1,0 +1,23 @@
+---
+title: Welcome to PySandbox
+description: Get started incorporating python code to your app.
+template: splash
+hero:
+  tagline: Run Python in Your App
+  image:
+    file: ../../assets/houston.webp
+  actions:
+    - text: PySandbox Guide
+      link: /guides/pysandbox/
+      icon: right-arrow
+      variant: primary
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+	<LinkCard title="Try it out!" icon="pencil" href="/guides/demo/" />
+	<LinkCard title="Examples" icon="add-document" href="/guides/examples/" />
+	<LinkCard title="Install" icon="setting" href="/guides/installation/" />
+	<LinkCard title="Documentation" icon="open-book" href="/documentation/main/" />
+</CardGrid>

@@ -1,0 +1,33 @@
+---
+interface Props {
+  id?: string;
+  code: string;
+}
+
+const { code, target } = Astro.props;
+---
+<div id={target}></div>
+<pre>{code}</pre>
+
+<pysandbox-example data-code={code} data-target={target}>
+</pysandbox-example>
+
+<script>
+  import {PyMainThreadSandbox} from 'pysandbox';
+
+  const sandbox = new PyMainThreadSandbox();
+  await sandbox.init();
+  class PySandboxExample extends HTMLElement {
+    constructor() {
+      super();
+      this.exec();
+    }
+    async exec() {
+      const imports = await sandbox.findImports(this.dataset.code);
+      await sandbox.installPackages(imports, {keep_going: true});
+      sandbox.exec(this.dataset.code, this.dataset.target);
+    }
+  }
+
+  customElements.define('pysandbox-example', PySandboxExample);
+</script>

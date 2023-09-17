@@ -1,7 +1,7 @@
 import js
 import polyscript
 import pysandbox
- 
+
 for name in pysandbox.api.__all__:
     setattr(polyscript.xworker.sync, name, getattr(pysandbox.api, name))
 
