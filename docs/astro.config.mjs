@@ -3,6 +3,8 @@ import starlight from "@astrojs/starlight";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://bugzpodder.github.io',
+  base: '/pysandbox',
   server: {
     headers: {
       "Cross-Origin-Embedder-Policy": "credentialless",
@@ -20,14 +22,14 @@ export default defineConfig({
           label: "Guides",
           items: [
             // Each item here is one entry in the navigation menu.
-            { label: "Demo", link: "/guides/demo/" },
-            { label: "Examples", link: "/guides/examples/" },
-            { label: "Installation", link: "/guides/installation/" },
+            { label: "Demo", link: "guides/demo/" },
+            { label: "Examples", link: "guides/examples/" },
+            { label: "Installation", link: "guides/installation/" },
           ],
         },
         {
-          label: "Demo",
-          autogenerate: { directory: "demo" },
+          label: "Examples",
+          autogenerate: { directory: "examples" },
         },
       ],
     }),

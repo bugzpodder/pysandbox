@@ -1,11 +1,9 @@
 ---
 title: PySandbox
-description: A guide to PySandbox.
+description: A demo of PySandbox.
 ---
 
-Guides lead a user through a specific task they want to accomplish, often with a sequence of steps.
-Writing a good guide requires thinking about what your users are trying to do.
+import Example from '../../components/Example.astro';
 
-## Further reading
-
-- Read [about how-to guides](https://diataxis.fr/how-to-guides/) in the Diátaxis framework
+<Example code="import pysandbox
+pysandbox.display('hello from PySandbox', target=current_target())" target="out" />

@@ -6,7 +6,8 @@ interface Props {
 
 const { code, target, worker, restricted } = Astro.props;
 ---
-<div id={target}></div>
+<div style="border: 1px solid; padding: 4px;">Output:<div id={target}></div></div>
+
 <pre>{code}</pre>
 
 <pysandbox-example data-code={code} data-target={target} data-worker={worker} data-restricted={restricted}>

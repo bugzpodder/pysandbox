@@ -1,11 +1,13 @@
 ---
 title: PySandbox
-description: A guide to PySandbox.
+description: Examples of PySandbox.
 ---
 
-Guides lead a user through a specific task they want to accomplish, often with a sequence of steps.
-Writing a good guide requires thinking about what your users are trying to do.
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
-## Further reading
-
-- Read [about how-to guides](https://diataxis.fr/how-to-guides/) in the Diátaxis framework
+<CardGrid>
+	<LinkCard title="Seaborn" description="A matplotlib and seaborn example" href="/pysandbox/examples/mainthread/demo3_seaborn/" />
+	<LinkCard title="Display" description="Display data in a sandbox" href="/pysandbox/examples/mainthread/demo2_display/" />
+    <LinkCard title="Worker" description="Run a worker sandbox" href="/pysandbox/examples/worker/demo3_seaborn/" />
+    <LinkCard title="Restricted" description="Restrict document access" href="/pysandbox/examples/workerrestricted/demo4_document/" />
+</CardGrid>
