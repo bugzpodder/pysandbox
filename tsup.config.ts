@@ -14,6 +14,9 @@ export default defineConfig((options)=>({
       js: `.${format}.js`,
     };
   },
+  loader: {
+    ".py": "text"
+  },
   sourcemap: true,
   clean: true,
   target: "es2016",

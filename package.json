@@ -1,7 +1,7 @@
 {
   "name": "pysandbox",
-  "version": "0.1.0",
-  "description": "JS pyodide sandbox",
+  "version": "0.3.0",
+  "description": "JS python (pyodide) sandbox",
   "files": [
     "dist/*"
   ],
@@ -21,7 +21,8 @@
   "keywords": [
     "polyscript",
     "pyodide",
-    "pyscript"
+    "pyscript",
+    "pysandbox"
   ],
   "author": "Jack Zhao",
   "license": "Apache-2.0",
@@ -32,13 +33,15 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "serve": "python serve.py"
+    "serve": "python serve.py",
+    "format": "prettier -w src"
   },
   "devDependencies": {
+    "prettier": "^3.0.3",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "polyscript": "^0.3.1"
+    "polyscript": "^0.3.8"
   }
 }
