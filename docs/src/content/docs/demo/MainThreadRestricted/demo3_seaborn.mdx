@@ -2,7 +2,7 @@
 title: seaborn
 ---
 
-import Example from '../../components/Example.astro';
+import Example from '../../../components/Example.astro';
 
 <Example code={`import pysandbox
 import numpy as np
@@ -49,4 +49,4 @@ g.figure.subplots_adjust(hspace=-.25)
 g.set_titles("")
 g.set(yticks=[], ylabel="")
 g.despine(bottom=True, left=True)
-pysandbox.display(plt, target=current_target())`} target="out" />
+pysandbox.display(plt, target=current_target())`} restricted="1" target="out" />

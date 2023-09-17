@@ -1,7 +1,7 @@
 {
   "name": "pysandbox",
   "version": "0.3.0",
-  "description": "JS python (pyodide) sandbox",
+  "description": "Run Python in your Web Application",
   "files": [
     "dist/*"
   ],
@@ -34,7 +34,8 @@
     "dev": "tsup --watch",
     "build": "tsup",
     "serve": "python serve.py",
-    "format": "prettier -w src"
+    "format": "prettier -w src tsup.config.ts",
+    "format:py": "black src"
   },
   "devDependencies": {
     "prettier": "^3.0.3",

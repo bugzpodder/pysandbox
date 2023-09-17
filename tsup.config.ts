@@ -1,13 +1,11 @@
 import { defineConfig } from "tsup";
 
-export default defineConfig((options)=>({
-  entry: [
-    "src/index.ts",
-  ],
+export default defineConfig((options) => ({
+  entry: ["src/index.ts"],
   dts: true,
-  outDir:"dist",
+  outDir: "dist",
   format: ["esm", "cjs"],
-  name: "tsup-tutorial",
+  name: "pysandbox",
   splitting: false,
   outExtension({ format }) {
     return {
@@ -15,7 +13,7 @@ export default defineConfig((options)=>({
     };
   },
   loader: {
-    ".py": "text"
+    ".py": "text",
   },
   sourcemap: true,
   clean: true,

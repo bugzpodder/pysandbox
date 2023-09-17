@@ -8,13 +8,13 @@
     </head>
     <body>
         <script type="module">
-            import {PyWorkerSandbox} from "/dist/index.esm.js";
-            const sandbox = new PyWorkerSandbox({restricted: true});
+            import {PyMainThreadSandbox} from "/dist/index.esm.js";
+            const sandbox = new PyMainThreadSandbox({restricted: true});
             await sandbox.init();
             try {
-                await sandbox.exec("import js\njs.document.getElementById('out').innerText = 'fail'");
+                await sandbox.exec("import js\njs.document.getElementById('out').innerText = 'fail';", "out");
             } catch (e) {
-                await sandbox.exec("import pysandbox\npysandbox.display('success', target=current_target())", "out");
+                await sandbox.exec("import pysandbox\npysandbox.display('success', target=current_target())", 'out');
             }
         </script>
         <div id="out"></div>

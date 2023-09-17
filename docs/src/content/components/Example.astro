@@ -4,28 +4,51 @@ interface Props {
   code: string;
 }
 
-const { code, target } = Astro.props;
+const { code, target, worker, restricted } = Astro.props;
 ---
 <div id={target}></div>
 <pre>{code}</pre>
 
-<pysandbox-example data-code={code} data-target={target}>
+<pysandbox-example data-code={code} data-target={target} data-worker={worker} data-restricted={restricted}>
 </pysandbox-example>
 
 <script>
-  import {PyMainThreadSandbox} from 'pysandbox';
+  import {PyMainThreadSandbox, PyWorkerSandbox} from 'pysandbox';
 
-  const sandbox = new PyMainThreadSandbox();
-  await sandbox.init();
+  async function getMainThreadSandbox(options) {
+    const sandbox = new PyMainThreadSandbox(options);
+    await sandbox.init();
+    return sandbox;
+  }
+
+  async function getWorkerSandbox(options) {
+    const sandbox = new PyWorkerSandbox(options);
+    await sandbox.init();
+    return sandbox;
+  }
+
   class PySandboxExample extends HTMLElement {
     constructor() {
       super();
       this.exec();
     }
     async exec() {
-      const imports = await sandbox.findImports(this.dataset.code);
-      await sandbox.installPackages(imports, {keep_going: true});
-      sandbox.exec(this.dataset.code, this.dataset.target);
+      let sandbox;
+      if (this.dataset.worker) {
+        sandbox = await getWorkerSandbox({ restricted: this.dataset.restricted });
+      } else {
+        sandbox = await getMainThreadSandbox({ restricted: this.dataset.restricted });
+      }
+      try {
+        const imports = await sandbox.findImports(this.dataset.code);
+        await sandbox.installPackages(imports, {keep_going: true});
+        await sandbox.exec(this.dataset.code, this.dataset.target);
+      } catch (e) {
+        if (this.dataset.target) {
+          globalThis.document.getElementById(this.dataset.target).innerText = String(e);
+        }
+        console.error(e);
+      }
     }
   }
 
