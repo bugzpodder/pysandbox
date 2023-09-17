@@ -1,6 +1,6 @@
 # PySandbox: Run Python your Web Application
 
-For installation and usage instructions see [user docs](https://bugzpodder.github.com/pysandbox)
+For installation and usage instructions see [user docs](https://bugzpodder.github.io/pysandbox)
 
 ## Contributing
 
