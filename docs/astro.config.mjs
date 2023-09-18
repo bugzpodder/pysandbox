@@ -3,8 +3,8 @@ import starlight from "@astrojs/starlight";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://bugzpodder.github.io',
-  base: '/pysandbox',
+  site: "https://bugzpodder.github.io",
+  base: "/pysandbox",
   server: {
     headers: {
       "Cross-Origin-Embedder-Policy": "credentialless",

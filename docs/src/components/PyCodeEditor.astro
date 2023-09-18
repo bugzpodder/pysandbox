@@ -1,0 +1,77 @@
+---
+interface Props {
+  code?: string;
+}
+
+const { code } = Astro.props;
+---
+
+<style>
+  :global(
+      :not(a, strong, em, del, span, input)
+        + :not(a, strong, em, del, span, input, :where(.not-content *))
+    ) {
+    margin-top: 0 !important;
+  }
+</style>
+
+<div id="out"></div>
+<div id="code-editor" style="margin: 1.5rem"></div>
+<button class="format">Format Code</button>
+<button class="run">Run code</button>
+<py-code-editor data-code={code}></py-code-editor>
+
+<script>
+  import { PyWorkerSandbox } from "pysandbox";
+
+  const sandbox = new PyWorkerSandbox();
+  await sandbox.init();
+
+  async function run(code) {
+    document.getElementById("out").replaceChildren();
+    const imports = await sandbox.findImports(code);
+    await sandbox.installPackages(imports, { keep_going: true });
+    await sandbox.exec(code, "out");
+  }
+
+  import { EditorView, basicSetup } from "codemirror";
+  import { python } from "@codemirror/lang-python";
+  const fixedHeightEditor = EditorView.theme({
+    "&": { height: "300px" },
+    ".cm-scroller": { overflow: "auto" },
+  });
+
+  let editor: EditorView;
+
+  class PyCodeEditor extends HTMLElement {
+    constructor() {
+      super();
+      editor = new EditorView({
+        doc: this.dataset.code,
+        extensions: [basicSetup, python(), fixedHeightEditor],
+        parent: document.getElementById("code-editor"),
+      });
+      run(this.dataset.code);
+    }
+  }
+
+  customElements.define("py-code-editor", PyCodeEditor);
+
+  document.querySelectorAll("button.format").forEach((button) => {
+    button.addEventListener("click", async () => {
+      editor.dispatch({
+        changes: {
+          from: 0,
+          to: editor.state.doc.length,
+          insert: await sandbox.formatCode(editor.state.doc.toString()),
+        },
+      });
+    });
+  });
+
+  document.querySelectorAll("button.run").forEach((button) => {
+    button.addEventListener("click", () => {
+      run(editor.state.doc.toString());
+    });
+  });
+</script>

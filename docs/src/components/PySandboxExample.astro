@@ -6,15 +6,23 @@ interface Props {
 
 const { code, target, worker, restricted } = Astro.props;
 ---
-<div style="border: 1px solid; padding: 4px;">Output:<div id={target}></div></div>
+
+<div style="border: 1px solid; padding: 4px;">
+  Output:<div id={target}></div>
+</div>
 
 <pre>{code}</pre>
 
-<pysandbox-example data-code={code} data-target={target} data-worker={worker} data-restricted={restricted}>
+<pysandbox-example
+  data-code={code}
+  data-target={target}
+  data-worker={worker}
+  data-restricted={restricted}
+>
 </pysandbox-example>
 
 <script>
-  import {PyMainThreadSandbox, PyWorkerSandbox} from 'pysandbox';
+  import { PyMainThreadSandbox, PyWorkerSandbox } from "pysandbox";
 
   async function getMainThreadSandbox(options) {
     const sandbox = new PyMainThreadSandbox(options);
@@ -36,22 +44,27 @@ const { code, target, worker, restricted } = Astro.props;
     async exec() {
       let sandbox;
       if (this.dataset.worker) {
-        sandbox = await getWorkerSandbox({ restricted: this.dataset.restricted });
+        sandbox = await getWorkerSandbox({
+          restricted: this.dataset.restricted,
+        });
       } else {
-        sandbox = await getMainThreadSandbox({ restricted: this.dataset.restricted });
+        sandbox = await getMainThreadSandbox({
+          restricted: this.dataset.restricted,
+        });
       }
       try {
         const imports = await sandbox.findImports(this.dataset.code);
-        await sandbox.installPackages(imports, {keep_going: true});
+        await sandbox.installPackages(imports, { keep_going: true });
         await sandbox.exec(this.dataset.code, this.dataset.target);
       } catch (e) {
         if (this.dataset.target) {
-          globalThis.document.getElementById(this.dataset.target).innerText = String(e);
+          globalThis.document.getElementById(this.dataset.target).innerText =
+            String(e);
         }
         console.error(e);
       }
     }
   }
 
-  customElements.define('pysandbox-example', PySandboxExample);
+  customElements.define("pysandbox-example", PySandboxExample);
 </script>

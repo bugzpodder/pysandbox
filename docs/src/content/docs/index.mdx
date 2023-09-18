@@ -13,11 +13,23 @@ hero:
       variant: primary
 ---
 
-import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+import { LinkCard, CardGrid } from "@astrojs/starlight/components";
 
 <CardGrid>
-	<LinkCard title="Try it out!" icon="pencil" href="/pysandbox/guides/demo/" />
-	<LinkCard title="Examples" icon="add-document" href="/pysandbox/guides/examples/" />
-	<LinkCard title="Install" icon="setting" href="/pysandbox/guides/installation/" />
-	<LinkCard title="Documentation" icon="open-book" href="/pysandbox/documentation/main/" />
+  <LinkCard title="Try it out!" icon="pencil" href="/pysandbox/guides/demo/" />
+  <LinkCard
+    title="Examples"
+    icon="add-document"
+    href="/pysandbox/guides/examples/"
+  />
+  <LinkCard
+    title="Install"
+    icon="setting"
+    href="/pysandbox/guides/installation/"
+  />
+  <LinkCard
+    title="Documentation"
+    icon="open-book"
+    href="/pysandbox/documentation/main/"
+  />
 </CardGrid>
