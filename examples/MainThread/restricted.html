@@ -14,7 +14,7 @@
             try {
                 await sandbox.exec("import js\njs.document.getElementById('out').innerText = 'fail';", "out");
             } catch (e) {
-                await sandbox.exec("import pysandbox\npysandbox.display('success', target=current_target())", 'out');
+                await sandbox.exec("display('success', target=current_target())", 'out');
             }
         </script>
         <div id="out"></div>

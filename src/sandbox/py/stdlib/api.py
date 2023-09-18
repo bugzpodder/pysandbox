@@ -15,8 +15,11 @@ async def micropip_install(packages, id, keep_going=False):
         else:
             await micropip.install(packages)
     except Exception as e:
-        print(e, file=sys.stderr)
-        js.onError(str(e), id)
+        if id:
+            print(e, file=sys.stderr)
+            js.onError(str(e), id)
+        else:
+            raise e
 
 
 async def run_async(code, target, id):
@@ -24,6 +27,7 @@ async def run_async(code, target, id):
 def current_target():
     return _pysandbox_target
 
+from pysandbox import display
 """
 
     globals = dict({"_pysandbox_target": target})
@@ -32,8 +36,11 @@ def current_target():
             f"{bootstrap_code}{code}", globals=globals
         )
     except Exception as e:
-        print(e, file=sys.stderr)
-        js.onError(str(e), id)
+        if id:
+            print(e, file=sys.stderr)
+            js.onError(str(e), id)
+        else:
+            raise e
 
 
 async def format_code(code, id):
@@ -47,8 +54,11 @@ async def format_code(code, id):
     except black.NothingChanged:
         pass
     except Exception as e:
-        print(e, file=sys.stderr)
-        js.onError(str(e), id)
+        if id:
+            print(e, file=sys.stderr)
+            js.onError(str(e), id)
+        else:
+            raise e
 
     return code
 

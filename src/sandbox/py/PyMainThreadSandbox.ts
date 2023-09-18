@@ -100,7 +100,7 @@ export class PyMainThreadSandbox implements ISandbox {
   async formatCode(code: string) {
     const pysandbox = await this.#wrap.interpreter.pyimport("pysandbox");
     try {
-      return pysandbox.api.format_code(code);
+      return pysandbox.api.format_code(code, null);
     } finally {
       pysandbox.destroy();
     }

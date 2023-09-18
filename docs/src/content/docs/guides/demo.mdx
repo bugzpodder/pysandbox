@@ -6,7 +6,6 @@ description: A demo of PySandbox.
 import PyCodeEditor from "../../../components/PyCodeEditor.astro";
 
 <PyCodeEditor code={`
-import pysandbox
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -28,4 +27,4 @@ fig, ax = plt.subplots()
 
 ax.streamplot(X[1:, 1:], Y[1:, 1:], U, V)
 
-pysandbox.display(plt, target=current_target())`} />
+display(plt, target=current_target())`} />

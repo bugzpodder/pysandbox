@@ -4,8 +4,7 @@ title: seaborn
 
 import PySandboxExample from "../../../../components/PySandboxExample.astro";
 
-<PySandboxExample code={`import pysandbox
-import numpy as np
+<PySandboxExample code={`import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -54,4 +53,4 @@ g.figure.subplots_adjust(hspace=-.25)
 g.set_titles("")
 g.set(yticks=[], ylabel="")
 g.despine(bottom=True, left=True)
-pysandbox.display(plt, target=current_target())`} restricted="1" target="out" />
+display(plt, target=current_target())`} restricted="1" target="out" />

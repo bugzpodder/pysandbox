@@ -11,8 +11,7 @@
             import {PyMainThreadSandbox} from "/dist/index.esm.js";
             const sandbox = new PyMainThreadSandbox({packages: ["matplotlib", "numpy"], restricted: true});
             await sandbox.init();
-            const code = `import pysandbox
-import numpy as np
+            const code = `import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -56,7 +55,7 @@ g.figure.subplots_adjust(hspace=-.25)
 g.set_titles("")
 g.set(yticks=[], ylabel="")
 g.despine(bottom=True, left=True)
-pysandbox.display(plt, target=current_target())
+display(plt, target=current_target())
 `;
             const packages = await sandbox.findImports(code);
             await sandbox.installPackages(packages, { keep_going: true });

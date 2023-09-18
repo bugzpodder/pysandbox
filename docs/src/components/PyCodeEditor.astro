@@ -15,16 +15,16 @@ const { code } = Astro.props;
   }
 </style>
 
-<div id="out"></div>
-<div id="code-editor" style="margin: 1.5rem"></div>
+<div id="out" style="height: 250px"></div>
+<div id="code-editor" style="margin: 1.5rem; height: 300px"></div>
 <button class="format">Format Code</button>
 <button class="run">Run code</button>
 <py-code-editor data-code={code}></py-code-editor>
 
 <script>
-  import { PyWorkerSandbox } from "pysandbox";
+  import { PyMainThreadSandbox } from "pysandbox";
 
-  const sandbox = new PyWorkerSandbox();
+  const sandbox = new PyMainThreadSandbox();
   await sandbox.init();
 
   async function run(code) {
