@@ -29,9 +29,14 @@ const { code } = Astro.props;
 
   async function run(code) {
     document.getElementById("out").replaceChildren();
-    const imports = await sandbox.findImports(code);
-    await sandbox.installPackages(imports, { keep_going: true });
-    await sandbox.exec(code, "out");
+    try {
+      const imports = await sandbox.findImports(code);
+      await sandbox.installPackages(imports, { keep_going: true });
+      await sandbox.exec(code, "out");
+    } catch (e) {
+      console.error(e);
+      document.getElementById("out").innerText = String(e);
+    }
   }
 
   import { EditorView, basicSetup } from "codemirror";
