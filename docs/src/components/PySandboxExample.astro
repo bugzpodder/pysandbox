@@ -43,16 +43,16 @@ const { code, target, worker, restricted } = Astro.props;
     }
     async exec() {
       let sandbox;
-      if (this.dataset.worker) {
-        sandbox = await getWorkerSandbox({
-          restricted: this.dataset.restricted,
-        });
-      } else {
-        sandbox = await getMainThreadSandbox({
-          restricted: this.dataset.restricted,
-        });
-      }
       try {
+        if (this.dataset.worker) {
+          sandbox = await getWorkerSandbox({
+            restricted: this.dataset.restricted,
+          });
+        } else {
+          sandbox = await getMainThreadSandbox({
+            restricted: this.dataset.restricted,
+          });
+        }
         const imports = await sandbox.findImports(this.dataset.code);
         await sandbox.installPackages(imports, { keep_going: true });
         await sandbox.exec(this.dataset.code, this.dataset.target);

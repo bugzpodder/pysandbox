@@ -7,8 +7,8 @@ hero:
   image:
     file: ../../assets/houston.webp
   actions:
-    - text: PySandbox Guide
-      link: /guides/pysandbox/
+    - text: Try it out
+      link: /pysandbox/guides/demo
       icon: right-arrow
       variant: primary
 ---
@@ -16,20 +16,24 @@ hero:
 import { LinkCard, CardGrid } from "@astrojs/starlight/components";
 
 <CardGrid>
-  <LinkCard title="Try it out!" icon="pencil" href="/pysandbox/guides/demo/" />
+  <LinkCard
+    title="Introduction"
+    icon="pencil"
+    href="/pysandbox/guides/introduction"
+  />
   <LinkCard
     title="Examples"
     icon="add-document"
-    href="/pysandbox/guides/examples/"
+    href="/pysandbox/guides/examples"
   />
   <LinkCard
     title="Install"
     icon="setting"
-    href="/pysandbox/guides/installation/"
+    href="/pysandbox/guides/installation"
   />
   <LinkCard
     title="Documentation"
     icon="open-book"
-    href="/pysandbox/documentation/main/"
+    href="/pysandbox/references"
   />
 </CardGrid>
