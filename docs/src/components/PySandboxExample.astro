@@ -9,7 +9,7 @@ interface Props {
 const { code, target, worker, restricted } = Astro.props;
 ---
 
-<script src="/pysandbox/coi-serviceworker.js" is:inline></script>
+<script src="/pysandbox/coi-serviceworker.min.js" is:inline></script>
 
 <style>
   :global(
@@ -101,6 +101,7 @@ const { code, target, worker, restricted } = Astro.props;
             restricted: this.dataset.restricted,
           });
         }
+        run(this.dataset.code);
       } catch (e) {
         if (this.dataset.target) {
           globalThis.document.getElementById(this.dataset.target).innerText =
@@ -108,7 +109,6 @@ const { code, target, worker, restricted } = Astro.props;
         }
         console.error(e);
       }
-      run(this.dataset.code);
     }
   }
 
