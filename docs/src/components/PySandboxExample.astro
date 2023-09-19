@@ -1,17 +1,32 @@
 ---
 interface Props {
-  id?: string;
   code: string;
+  target?: string;
+  worker?: boolean;
+  restricted?: boolean;
 }
 
 const { code, target, worker, restricted } = Astro.props;
 ---
 
-<div style="border: 1px solid; padding: 4px;">
-  Output:<div id={target}></div>
+<script src="/pysandbox/coi-serviceworker.js" is:inline></script>
+
+<style>
+  :global(
+      :not(a, strong, em, del, span, input)
+        + :not(a, strong, em, del, span, input, :where(.not-content *))
+    ) {
+    margin-top: 0 !important;
+  }
+</style>
+
+<div style="border: 1px solid; padding: 4px; margin-bottom: 4px;">
+  Output:<div id={target} style="min-height: 500px"></div>
 </div>
 
-<pre>{code}</pre>
+<div id="code-editor" style="margin-bottom: 1.5rem; height: 300px"></div>
+<button class="format">Format Code</button>
+<button class="run" style="margin-left: 4px">Run code</button>
 
 <pysandbox-example
   data-code={code}
@@ -23,6 +38,17 @@ const { code, target, worker, restricted } = Astro.props;
 
 <script>
   import { PyMainThreadSandbox, PyWorkerSandbox } from "pysandbox";
+  import { EditorView, basicSetup } from "codemirror";
+  import { python } from "@codemirror/lang-python";
+  const fixedHeightEditor = EditorView.theme({
+    "&": { height: "300px" },
+    ".cm-scroller": { overflow: "auto" },
+  });
+
+  let editor: EditorView;
+
+  let sandbox: ISandbox;
+  let target: string;
 
   async function getMainThreadSandbox(options) {
     const sandbox = new PyMainThreadSandbox(options);
@@ -36,17 +62,36 @@ const { code, target, worker, restricted } = Astro.props;
     return sandbox;
   }
 
+  async function run(code) {
+    document.getElementById(target).replaceChildren();
+    try {
+      const imports = await sandbox.findImports(code);
+      await sandbox.installPackages(imports, { keep_going: true });
+      await sandbox.exec(code, target);
+    } catch (e) {
+      console.error(e);
+      document.getElementById(target).innerText = String(e);
+    }
+  }
+
   class PySandboxExample extends HTMLElement {
     constructor() {
       super();
+      editor = new EditorView({
+        doc: this.dataset.code,
+        extensions: [basicSetup, python(), fixedHeightEditor],
+        parent: document.getElementById("code-editor"),
+      });
       this.exec();
     }
     async exec() {
-      let sandbox;
+      target = this.dataset.target;
       try {
         if (this.dataset.worker) {
           if (typeof SharedArrayBuffer === "undefined") {
-            throw new Error("Unable to use SharedArrayBuffer due insecure environment.");
+            throw new Error(
+              "Unable to use SharedArrayBuffer due insecure environment.",
+            );
           }
           sandbox = await getWorkerSandbox({
             restricted: this.dataset.restricted,
@@ -56,9 +101,6 @@ const { code, target, worker, restricted } = Astro.props;
             restricted: this.dataset.restricted,
           });
         }
-        const imports = await sandbox.findImports(this.dataset.code);
-        await sandbox.installPackages(imports, { keep_going: true });
-        await sandbox.exec(this.dataset.code, this.dataset.target);
       } catch (e) {
         if (this.dataset.target) {
           globalThis.document.getElementById(this.dataset.target).innerText =
@@ -66,8 +108,27 @@ const { code, target, worker, restricted } = Astro.props;
         }
         console.error(e);
       }
+      run(this.dataset.code);
     }
   }
 
   customElements.define("pysandbox-example", PySandboxExample);
+
+  document.querySelectorAll("button.format").forEach((button) => {
+    button.addEventListener("click", async () => {
+      editor.dispatch({
+        changes: {
+          from: 0,
+          to: editor.state.doc.length,
+          insert: await sandbox.formatCode(editor.state.doc.toString()),
+        },
+      });
+    });
+  });
+
+  document.querySelectorAll("button.run").forEach((button) => {
+    button.addEventListener("click", () => {
+      run(editor.state.doc.toString());
+    });
+  });
 </script>

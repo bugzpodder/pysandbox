@@ -1,5 +1,5 @@
 ---
-title: PySandbox Introduction
+title: Introduction
 description: What is a PySandbox?
 ---
 

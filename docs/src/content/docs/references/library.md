@@ -1,5 +1,5 @@
 ---
-title: PySandbox library
+title: Sandbox Module
 description: References for PySandbox library.
 ---
 

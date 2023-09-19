@@ -1,5 +1,5 @@
 ---
-title: PySandbox
+title: Installation
 description: How to install PySandbox.
 ---
 

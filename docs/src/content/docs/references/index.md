@@ -5,7 +5,7 @@ description: References for PySandbox.
 
 The `pysandbox` library exports two classes: `PyMainThreadSandbox` and `PyWorkerSandbox`.
 
-`PyMainThreadSandbox` will execute python code on the main thread while `PyWorkerSandbox` will execute python code in a WebWorker if [crossOriginIsolated](https://web.dev/coop-coep/).
+`PyMainThreadSandbox` will execute python code on the main thread while `PyWorkerSandbox` will execute python code in a web worker if [crossOriginIsolated](https://web.dev/coop-coep/).
 
 Both classes shares an identical interface.
 
