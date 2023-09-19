@@ -45,6 +45,9 @@ const { code, target, worker, restricted } = Astro.props;
       let sandbox;
       try {
         if (this.dataset.worker) {
+          if (typeof SharedArrayBuffer === "undefined") {
+            throw new Error("Unable to use SharedArrayBuffer due insecure environment.");
+          }
           sandbox = await getWorkerSandbox({
             restricted: this.dataset.restricted,
           });
