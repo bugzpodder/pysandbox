@@ -5,12 +5,15 @@ template: splash
 hero:
   tagline: Run Python in Your Web Application
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/logo.png
   actions:
     - text: Try it out
       link: /pysandbox/examples/mainthread/example3_seaborn
       icon: right-arrow
       variant: primary
+    - text: View on GitHub
+      icon: external
+      link: https://github.com/bugzpodder/pysandbox
 ---
 
 import { LinkCard, CardGrid } from "@astrojs/starlight/components";
@@ -18,22 +21,22 @@ import { LinkCard, CardGrid } from "@astrojs/starlight/components";
 <CardGrid>
   <LinkCard
     title="Introduction"
-    icon="pencil"
+    description="PySandbox is a library that helps developers create client-side Python-powered web applications."
     href="/pysandbox/guides/introduction"
   />
   <LinkCard
     title="Examples"
-    icon="add-document"
+    description="Adding Python visualizations backed by IPython and matplotlib into your application."
     href="/pysandbox/guides/examples"
   />
   <LinkCard
     title="Install"
-    icon="setting"
+    description="PySandbox is available on NPM (or via CDN)."
     href="/pysandbox/guides/installation"
   />
   <LinkCard
     title="Documentation"
-    icon="open-book"
+    description="How to get most out of PySandbox."
     href="/pysandbox/references"
   />
 </CardGrid>
