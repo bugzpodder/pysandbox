@@ -16,6 +16,7 @@ export default defineConfig({
       title: "PySandbox Docs",
       social: {
         github: "https://github.com/bugzpodder/pysandbox",
+        discord: "https://discord.gg/BYB2kvyFwm",
       },
       sidebar: [
         {
