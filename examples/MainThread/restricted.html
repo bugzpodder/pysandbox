@@ -1,22 +1,30 @@
 <html>
-    <head>
-        <script type="importmap">
-            { "imports": {
-                "polyscript": "https://esm.sh/polyscript@0.3.8"
-            } }
-          </script>
-    </head>
-    <body>
-        <script type="module">
-            import {PyMainThreadSandbox} from "/dist/index.esm.js";
-            const sandbox = new PyMainThreadSandbox({restricted: true});
-            await sandbox.init();
-            try {
-                await sandbox.exec("import js\njs.document.getElementById('out').innerText = 'fail';", "out");
-            } catch (e) {
-                await sandbox.exec("display('success', target=current_target())", 'out');
-            }
-        </script>
-        <div id="out"></div>
-    </body>
+  <head>
+    <script type="importmap">
+      {
+        "imports": {
+          "polyscript": "https://esm.sh/polyscript@0.4.2"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <script type="module">
+      import { PyMainThreadSandbox } from "/dist/index.esm.js";
+      const sandbox = new PyMainThreadSandbox({ restricted: true });
+      await sandbox.init();
+      try {
+        await sandbox.exec(
+          "import js\njs.document.getElementById('out').innerText = 'fail';",
+          "out",
+        );
+      } catch (e) {
+        await sandbox.exec(
+          "display('success', target=current_target())",
+          "out",
+        );
+      }
+    </script>
+    <div id="out"></div>
+  </body>
 </html>

@@ -3113,10 +3113,10 @@ plain-tag@^0.1.3:
   resolved "https://registry.yarnpkg.com/plain-tag/-/plain-tag-0.1.3.tgz#d20c0fdf8fa80c170bc1d12d6c9ab38e27922836"
   integrity sha512-yyVAOFKTAElc7KdLt2+UKGExNYwYb/Y/WE9i+1ezCQsJE8gbKSjewfpRqK2nQgZ4d4hhAAGgDCOcIZVilqE5UA==
 
-polyscript@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/polyscript/-/polyscript-0.3.8.tgz#4b9e19c2ea48f51f8d0e85756e5df69796b02707"
-  integrity sha512-LXf1WQxhXiCud4VFCl4TUNFqTHghhpUYxSAAlCdb5XbxQs+0HSaC+1PuyrfsKDEM0WSZXa3xCH1LOxQl2aHDbg==
+polyscript@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/polyscript/-/polyscript-0.4.2.tgz#e59b18136aae7d8f3dd314f84b1b34cd40485a2f"
+  integrity sha512-3mM5Y/DdpYND8/INAUmgF5VL4InVc04xADB+of129t8RjXi3eZK4xoGRPZdTYzW+wM56WNptnC8fC9Zt7jKLoA==
   dependencies:
     "@ungap/structured-clone" "^1.2.0"
     "@ungap/with-resolvers" "^0.1.0"
@@ -3210,12 +3210,12 @@ pump@^3.0.0:
     end-of-stream "^1.1.0"
     once "^1.3.1"
 
-pysandbox@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/pysandbox/-/pysandbox-0.3.1.tgz#7b6926d42e8ac4e7b621d1d4f4ccf83f88015fae"
-  integrity sha512-640nHFL9Hw146+JyBGXiyfQIDK/2V1lbp4UgYoJ2rkZ35TxWP6Ch0aHJVeiYPQ26VF52lLtWpb0jVLHkHS9xkg==
+pysandbox@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/pysandbox/-/pysandbox-0.4.0.tgz#d366d49962327eedb94573fd538342088c2f0b91"
+  integrity sha512-xDeb2nyiusYZZrQFIvcJvcjhG/uhwcQn3DFLRKnqLjx44DskCbeXgDWnGPRcYpG4iHQ7TKupRkv3gXb7GuAdzw==
   dependencies:
-    polyscript "^0.3.8"
+    polyscript "^0.4.2"
 
 queue-microtask@^1.2.2:
   version "1.2.3"

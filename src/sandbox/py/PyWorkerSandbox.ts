@@ -1,11 +1,11 @@
 import { XWorker } from "polyscript";
-import { waitFor } from "../../utils";
-import stdlib from "./stdlib/index";
+import runtimeModule from "./python/runtime";
 import { writePythonFiles, display } from "./utils";
 import { PySandboxOptions } from "./types";
 import { ISandbox } from "../../sanbox";
-import bootstrap from "./worker/bootstrap.py";
-import restrictedBootstrap from "./worker/restricted_bootstrap.py";
+import bootstrapCode from "./python/worker/bootstrap_common.py";
+import bootstrapNonRestrictedCode from "./python/worker/bootstrap_nonrestricted.py";
+import bootstrapRestrictedCode from "./python/worker/bootstrap_restricted.py";
 
 export class PyWorkerSandbox implements ISandbox {
   #sync: ProxyHandler<Worker>;
@@ -21,48 +21,48 @@ export class PyWorkerSandbox implements ISandbox {
   }
 
   async init(options?: Record<string, any>) {
-    const stdlibCode = writePythonFiles({
-      ...stdlib,
-      ...this.#options?.modules,
+    return new Promise((resolve, reject) => {
+      const bootstrapModulesCode = writePythonFiles({
+        ...runtimeModule,
+        ...this.#options?.modules,
+      });
+      const bootstrapWorkerCode = `${bootstrapCode}${
+        this.#options?.restricted
+          ? bootstrapRestrictedCode
+          : bootstrapNonRestrictedCode
+      }`;
+
+      const pyworker = XWorker(
+        URL.createObjectURL(
+          new Blob([`${bootstrapModulesCode}${bootstrapWorkerCode}`], {
+            type: "text/plain",
+          }),
+        ),
+        {
+          type: "pyodide",
+          config: {
+            packages: this.#options?.packages ?? [],
+          } as any,
+          ...options,
+        },
+      ) as Worker & { sync: Record<string, Function> };
+
+      const jsApi = {
+        onError: this.onError.bind(this),
+        display,
+        ...this.#options?.jsApi,
+      };
+
+      for (const name of Object.keys(jsApi)) {
+        const api = jsApi[name];
+        pyworker.sync[name] = api;
+      }
+      pyworker.sync.jsExports = () => Object.keys(jsApi);
+      pyworker.sync.onWorkerReady = () => {
+        this.#sync = pyworker.sync;
+        resolve(pyworker);
+      };
     });
-    const isRestricted = this.#options?.restricted;
-    const workerCode = isRestricted ? restrictedBootstrap : bootstrap;
-
-    const pyworker = XWorker(
-      URL.createObjectURL(
-        new Blob([`${stdlibCode}${workerCode}`], { type: "text/plain" }),
-      ),
-      {
-        type: "pyodide",
-        config: {
-          packages:
-            !isRestricted && this.#options?.packages
-              ? this.#options?.packages
-              : [],
-        } as any,
-        ...options,
-      },
-    ) as Worker & { sync: Record<string, Function> };
-
-    const jsApi = {
-      onError: this.onError.bind(this),
-      display,
-      ...this.#options?.jsApi,
-    };
-
-    for (const name of Object.keys(jsApi)) {
-      const api = jsApi[name];
-      pyworker.sync[name] = api;
-    }
-    pyworker.sync.jsExports = () => Object.keys(jsApi);
-    pyworker.sync.onWorkerReady = () => {
-      this.#sync = pyworker.sync;
-    };
-    await waitFor(() => Boolean(this.#sync));
-    if (isRestricted && this.#options?.packages) {
-      await this.installPackages(this.#options?.packages);
-    }
-    return pyworker;
   }
 
   createErrorContext(): [string, () => string] {

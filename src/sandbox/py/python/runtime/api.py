@@ -2,6 +2,7 @@ import sys
 import js
 import micropip
 import pyodide
+import os
 
 
 async def micropip_install(packages, id, keep_going=False):
@@ -29,6 +30,9 @@ def current_target():
 
 from pysandbox import display
 """
+
+    if not os.environ.get("MPLBACKEND"):
+        os.environ["MPLBACKEND"] = "template"
 
     globals = dict({"_pysandbox_target": target})
     try:

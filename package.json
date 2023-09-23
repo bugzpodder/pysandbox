@@ -1,6 +1,6 @@
 {
   "name": "pysandbox",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Run Python in your Web Application",
   "files": [
     "dist/*"
@@ -31,18 +31,22 @@
   },
   "homepage": "https://github.com/bugzpodder/pysandbox",
   "scripts": {
-    "dev": "tsup --watch",
     "build": "tsup",
+    "dev": "tsup --watch",
+    "format": "prettier -w src",
+    "format:py": "black src",
     "serve": "python serve.py",
-    "format": "prettier -w src tsup.config.ts",
-    "format:py": "black src"
+    "prepare": "husky install",
+    "prepublish": "yarn build"
   },
   "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "polyscript": "^0.3.8"
+    "polyscript": "^0.4.2"
   }
 }

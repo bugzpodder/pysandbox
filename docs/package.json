@@ -11,15 +11,14 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier -w src src/**/*.astro astro.config.mjs"
+    "format": "prettier -w src src/**/*.astro"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.10.0",
     "@codemirror/lang-python": "^6.1.3",
     "astro": "^3.0.6",
     "codemirror": "^6.0.1",
-    "pysandbox": "^0.3.1",
-    "sharp": "^0.32.5"
+    "pysandbox": "^0.4.0"
   },
   "devDependencies": {
     "prettier": "^3.0.3",

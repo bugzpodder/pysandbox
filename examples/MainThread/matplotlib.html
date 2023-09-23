@@ -1,17 +1,22 @@
 <html>
-    <head>
-        <script type="importmap">
-            { "imports": {
-                "polyscript": "https://esm.sh/polyscript@0.3.8"
-            } }
-          </script>
-    </head>
-    <body>
-        <script type="module">
-            import {PyMainThreadSandbox} from "/dist/index.esm.js";
-            const sandbox = new PyMainThreadSandbox({packages: ["matplotlib", "numpy"]});
-            await sandbox.init();
-            await sandbox.exec(`import matplotlib.pyplot as plt
+  <head>
+    <script type="importmap">
+      {
+        "imports": {
+          "polyscript": "https://esm.sh/polyscript@0.4.2"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <script type="module">
+      import { PyMainThreadSandbox } from "/dist/index.esm.js";
+      const sandbox = new PyMainThreadSandbox({
+        packages: ["matplotlib", "numpy"],
+      });
+      await sandbox.init();
+      await sandbox.exec(
+        `import matplotlib.pyplot as plt
 import numpy as np
 
 plt.style.use('_mpl-gallery')
@@ -29,8 +34,10 @@ ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
        ylim=(0, 8), yticks=np.arange(1, 8))
 
 display(plt, target=current_target())
-`, "out");
-        </script>
-        <div id="out"></div>
-    </body>
+`,
+        "out",
+      );
+    </script>
+    <div id="out"></div>
+  </body>
 </html>

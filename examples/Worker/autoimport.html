@@ -1,17 +1,19 @@
 <html>
-    <head>
-        <script type="importmap">
-            { "imports": {
-                "polyscript": "https://esm.sh/polyscript@0.3.8"
-            } }
-          </script>
-    </head>
-    <body>
-        <script type="module">
-            import {PyWorkerSandbox} from "/dist/index.esm.js";
-            const sandbox = new PyWorkerSandbox({restricted: true});
-            await sandbox.init();
-            const code = `import numpy as np
+  <head>
+    <script type="importmap">
+      {
+        "imports": {
+          "polyscript": "https://esm.sh/polyscript@0.4.2"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <script type="module">
+      import { PyWorkerSandbox } from "/dist/index.esm.js";
+      const sandbox = new PyWorkerSandbox({ restricted: true });
+      await sandbox.init();
+      const code = `import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -58,10 +60,10 @@ g.despine(bottom=True, left=True)
 display(plt, target=current_target())
 `;
 
-            const packages = await sandbox.findImports(code);
-            await sandbox.installPackages(packages, { keep_going: true });
-            await sandbox.exec(code, "out");
-        </script>
-        <div id="out"></div>
-    </body>
+      const packages = await sandbox.findImports(code);
+      await sandbox.installPackages(packages, { keep_going: true });
+      await sandbox.exec(code, "out");
+    </script>
+    <div id="out"></div>
+  </body>
 </html>
