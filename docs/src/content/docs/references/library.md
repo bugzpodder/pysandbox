@@ -1,10 +1,10 @@
 ---
-title: Sandbox Module
-description: References for PySandbox library.
+title: Runtime
+description: Runtime Reference for PySandbox library.
 ---
 
-PySandbox includes a custom module `pysandbox.py`
-that display a single function:
+PySandbox includes a custom runtime module `pysandbox.py`
+with a single a single function:
 
 ```python
 def display(obj, target, mime_type=None):
@@ -27,7 +27,7 @@ import plt from matplotlib
 display(plt, target=current_target())
 ```
 
-where `current_target` is a pre-defined convience function:
+where `current_target` is a pre-defined convenience function:
 
 ```python
 def current_target():

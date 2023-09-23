@@ -1,4 +1,4 @@
-# Version 0.4
+# Version 0.4.0
 
 - bumped polyscript to 0.4
 - code running in restricted mode no longer have document access

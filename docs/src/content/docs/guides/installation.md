@@ -3,15 +3,13 @@ title: Installation
 description: How to install PySandbox.
 ---
 
-The pysandbox package is available as a npm module.
-
-To use it simply run `yarn add pysandbox` or use your favorite package manager.
+The pysandbox package is available as a npm module: https://www.npmjs.com/package/pysandbox
 
 Usage in html:
 
 ```html
 <script type="module">
-  import { PyMainThreadSandbox } from "https://esm.sh/pysandbox@0.3.1/";
+  import { PyMainThreadSandbox } from "https://esm.sh/pysandbox@0.4.0/";
   const sandbox = new PyMainThreadSandbox();
   await sandbox.init();
   await sandbox.exec("display('Hello', target=current_target())", "output");
