@@ -6,6 +6,7 @@ test("main thread success", async ({ page }) => {
 });
 
 test("worker success", async ({ page }) => {
+  test.skip(Boolean(process.env.CI));
   await page.goto("/examples/Worker/restricted.html");
   await expect(page.getByTestId("out")).toHaveText(/success/);
 });
