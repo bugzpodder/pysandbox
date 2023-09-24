@@ -64,6 +64,6 @@ display(plt, target=current_target())
       await sandbox.installPackages(packages, { keep_going: true });
       await sandbox.exec(code, "out");
     </script>
-    <div id="out"></div>
+    <div id="out" data-testid="out"></div>
   </body>
 </html>

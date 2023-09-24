@@ -37,11 +37,14 @@
     "format:py": "black src",
     "serve": "python serve.py",
     "prepare": "husky install",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build",
+    "test": "playwright test"
   },
   "devDependencies": {
+    "@playwright/test": "^1.38.1",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
+    "playwright": "^1.38.1",
     "prettier": "^3.0.3",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
