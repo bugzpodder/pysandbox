@@ -63,14 +63,18 @@ const { code, target, worker, restricted } = Astro.props;
   }
 
   async function run(code) {
-    document.getElementById(target).replaceChildren();
+    if (target) {
+      document.getElementById(target).replaceChildren();
+    }
     try {
       const imports = await sandbox.findImports(code);
       await sandbox.installPackages(imports, { keep_going: true });
       await sandbox.exec(code, target);
     } catch (e) {
       console.error(e);
-      document.getElementById(target).innerText = String(e);
+      if (target) {
+        document.getElementById(target).innerText = String(e);
+      }
     }
   }
 
