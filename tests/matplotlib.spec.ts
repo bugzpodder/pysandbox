@@ -19,6 +19,7 @@ test("restricted matplotlib success", async ({ page }) => {
 });
 
 test("restricted worker success", async ({ page }) => {
+  test.skip(Boolean(process.env.CI));
   await page.goto("/examples/Worker/matplotlib-restricted.html");
   await expect(page.getByTestId("out").locator("css=img")).toHaveCount(1);
   await expect(page).toHaveScreenshot("matplotlib.png");

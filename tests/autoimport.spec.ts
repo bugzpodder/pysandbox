@@ -7,7 +7,7 @@ test("main thread success", async ({ page }) => {
 });
 
 test("worker success", async ({ page }) => {
-  test.skip(process.env.CI);
+  test.skip(Boolean(process.env.CI));
   await page.goto("/examples/Worker/autoimport.html");
   await expect(page.getByTestId("out").locator("css=img")).toHaveCount(1);
   await expect(page).toHaveScreenshot("seaborn.png");
