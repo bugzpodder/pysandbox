@@ -11,4 +11,4 @@ Pyodide does not setup web workers out of the box. If you site is [crossOriginIs
 
 ## PyScript
 
-[PyScript](https://pyscript.net/) is great for configuring a single html page to run python code. However if you are using a JS web-framework (e.g. a React-based framework) to build your web application, PySandbox can provide finer-grained control from its API.
+[PyScript](https://pyscript.net/) is great for configuring a single html page to run python code as well as providing acess to DOM through its `pyweb` API.  `PyScript` adopts an RPC pattern while `PySandbox` is closer to be a REST-like API.  If you are using a JS web-framework (e.g. a React-based framework) to build your web application, you may find `PySandbox` easier to use because of its pure JS-based invocation.
