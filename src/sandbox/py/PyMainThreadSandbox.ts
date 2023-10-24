@@ -93,12 +93,14 @@ export class PyMainThreadSandbox implements ISandbox {
   }
 
   async findImports(code: string) {
-    const pyodideModule = await this.#wrap.interpreter.pyimport("pyodide");
-    try {
-      return pyodideModule.code.find_imports(code);
-    } finally {
-      pyodideModule.destroy();
-    }
+    return (await this.#wrap.interpreter.runPythonAsync(`
+        import importlib
+        from pyodide.ffi import to_js
+        import pyodide.code
+        def find_missing_imports(code):
+          return to_js([package for package in pyodide.code.find_imports(code) if importlib.util.find_spec(package) is None])
+        find_missing_imports
+      `))(code);
   }
 
   async formatCode(code: string) {
