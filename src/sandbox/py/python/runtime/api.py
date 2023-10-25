@@ -3,6 +3,7 @@ import js
 import micropip
 import pyodide
 import os
+import importlib
 
 
 async def micropip_install(packages, id, keep_going=False):
@@ -68,8 +69,7 @@ async def format_code(code, id):
 
 
 def find_imports(code):
-    return pyodide.code.find_imports(code)
-
+    return [package for package in pyodide.code.find_imports(code) if importlib.util.find_spec(package) is None]
 
 __all__ = [
     "micropip_install",
