@@ -69,7 +69,12 @@ async def format_code(code, id):
 
 
 def find_imports(code):
-    return [package for package in pyodide.code.find_imports(code) if importlib.util.find_spec(package) is None]
+    return [
+        package
+        for package in pyodide.code.find_imports(code)
+        if importlib.util.find_spec(package) is None
+    ]
+
 
 __all__ = [
     "micropip_install",

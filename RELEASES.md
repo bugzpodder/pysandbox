@@ -1,3 +1,7 @@
+# Version 0.4.1
+
+- find_imports no longer returning Python stdlib imports.
+
 # Version 0.4.0
 
 - bumped polyscript to 0.4
