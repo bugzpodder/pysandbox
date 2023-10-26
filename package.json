@@ -1,6 +1,6 @@
 {
   "name": "pysandbox",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Run Python in your Web Application",
   "files": [
     "dist/*"
@@ -50,6 +50,6 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "polyscript": "^0.4.2"
+    "polyscript": "^0.5.0"
   }
 }

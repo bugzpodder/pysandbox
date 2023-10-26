@@ -1275,15 +1275,16 @@ codemirror@^6.0.1:
     "@codemirror/state" "^6.0.0"
     "@codemirror/view" "^6.0.0"
 
-coincident@^0.11.6:
-  version "0.11.6"
-  resolved "https://registry.yarnpkg.com/coincident/-/coincident-0.11.6.tgz#63a5da87879d1af7e816750984fe256b8f35b07d"
-  integrity sha512-Ld82kMrjDwNjpi+WE2C1v5ADPvOa+NANBWL8o1ohj+UhFTzDX3OMQOE9NSnjbUuMh+U/WBp39+uO2WFs8vJ3sw==
+coincident@^0.14.2:
+  version "0.14.2"
+  resolved "https://registry.yarnpkg.com/coincident/-/coincident-0.14.2.tgz#33d032bc9ed0cb6700e8d9912cb5240187307f7c"
+  integrity sha512-Xc/lh56dl/v5GT1R3bEWxiLzF5ZTiXE5Flcd0+qvrBGhZsvDha8bgqhpocrvJmELuerhDO3+EQKDdCzPBPodJQ==
   dependencies:
     "@ungap/structured-clone" "^1.2.0"
     "@ungap/with-resolvers" "^0.1.0"
+    gc-hook "^0.2.1"
   optionalDependencies:
-    ws "^8.13.0"
+    ws "^8.14.2"
 
 color-convert@^1.9.0:
   version "1.9.3"
@@ -1712,6 +1713,11 @@ function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
+
+gc-hook@^0.2.1:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/gc-hook/-/gc-hook-0.2.3.tgz#4a7c3d199fd33880d04c38ed26f0cf9199fcc80f"
+  integrity sha512-XfA+XiE7QzJzonfvNjTXmcyGtprD6m85KEH9fngmxghVR7PJ4f3ZKsLI22QNpWJiDO5EIR6iMzz9wSxLBqw6+A==
 
 gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
@@ -3113,16 +3119,18 @@ plain-tag@^0.1.3:
   resolved "https://registry.yarnpkg.com/plain-tag/-/plain-tag-0.1.3.tgz#d20c0fdf8fa80c170bc1d12d6c9ab38e27922836"
   integrity sha512-yyVAOFKTAElc7KdLt2+UKGExNYwYb/Y/WE9i+1ezCQsJE8gbKSjewfpRqK2nQgZ4d4hhAAGgDCOcIZVilqE5UA==
 
-polyscript@^0.4.2:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/polyscript/-/polyscript-0.4.2.tgz#e59b18136aae7d8f3dd314f84b1b34cd40485a2f"
-  integrity sha512-3mM5Y/DdpYND8/INAUmgF5VL4InVc04xADB+of129t8RjXi3eZK4xoGRPZdTYzW+wM56WNptnC8fC9Zt7jKLoA==
+polyscript@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/polyscript/-/polyscript-0.5.0.tgz#1c703efd427cc511b1c1b72b097834b548fef10a"
+  integrity sha512-PkClZsFSBDJpSkRIqv5CT0iOu97MZ0D3dQntjveM7I79m8/mKr6RlgEZQIhy9nHROItqR6QBIeIUFTTESzRJFA==
   dependencies:
     "@ungap/structured-clone" "^1.2.0"
     "@ungap/with-resolvers" "^0.1.0"
     basic-devtools "^0.1.6"
     codedent "^0.1.2"
-    coincident "^0.11.6"
+    coincident "^0.14.2"
+    html-escaper "^3.0.3"
+    sticky-module "^0.1.0"
 
 postcss@^8.4.27:
   version "8.4.29"
@@ -3210,12 +3218,12 @@ pump@^3.0.0:
     end-of-stream "^1.1.0"
     once "^1.3.1"
 
-pysandbox@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/pysandbox/-/pysandbox-0.4.0.tgz#d366d49962327eedb94573fd538342088c2f0b91"
-  integrity sha512-xDeb2nyiusYZZrQFIvcJvcjhG/uhwcQn3DFLRKnqLjx44DskCbeXgDWnGPRcYpG4iHQ7TKupRkv3gXb7GuAdzw==
+pysandbox@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/pysandbox/-/pysandbox-0.5.0.tgz#7e586f299af7cde52ad08b2cbbb228d656ed72fb"
+  integrity sha512-FR6fhkIX2O4kfLCc+zqE3oR5DTopi74l4lkwtz3aEYAjEbVSx2dqoRjItudgXu1aYp2YPNSbjEIae+GkRF4L9w==
   dependencies:
-    polyscript "^0.4.2"
+    polyscript "^0.5.0"
 
 queue-microtask@^1.2.2:
   version "1.2.3"
@@ -3589,6 +3597,11 @@ stdin-discarder@^0.1.0:
   integrity sha512-xhV7w8S+bUwlPTb4bAOUQhv8/cSS5offJuX8GQGq32ONF0ZtDWKfkdomM3HMRA+LhX6um/FZ0COqlwsjD53LeQ==
   dependencies:
     bl "^5.0.0"
+
+sticky-module@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/sticky-module/-/sticky-module-0.1.0.tgz#4d134eef427d35ff2f3500550853a38e2952a2a1"
+  integrity sha512-MYmkk/ihfpzQjOPfxbqScT2JS72H/8ueUtnBxxZiJbHopmJ1Lw62Lq/IimL34czVf1oQoG0Be/TDtJUyNVdEvA==
 
 stream-parser@~0.3.1:
   version "0.3.1"
@@ -4077,10 +4090,10 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==
 
-ws@^8.13.0:
-  version "8.14.1"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-8.14.1.tgz#4b9586b4f70f9e6534c7bb1d3dc0baa8b8cf01e0"
-  integrity sha512-4OOseMUq8AzRBI/7SLMUwO+FEDnguetSk7KMb1sHwvF2w2Wv5Hoj0nlifx8vtGsftE/jWHojPy8sMMzYLJ2G/A==
+ws@^8.14.2:
+  version "8.14.2"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.14.2.tgz#6c249a806eb2db7a20d26d51e7709eab7b2e6c7f"
+  integrity sha512-wEBG1ftX4jcglPxgFCMJmZ2PLtSbJ2Peg6TmpJFTbe9GZYOQCDPdMYu/Tm0/bGZkw8paZnJY45J4K2PZrLYq8g==
 
 yallist@^3.0.2:
   version "3.1.1"

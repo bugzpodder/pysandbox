@@ -19,42 +19,46 @@ export class PyMainThreadSandbox implements ISandbox {
       define(null, {
         interpreter: "pyodide",
         config: JSON.stringify({ packages: this.#options?.packages || [] }),
-        onInterpreterReady: async (wrap: any) => {
-          const bootstrapModulesCode = writePythonFiles({
-            ...runtimeModule,
-            ...this.#options?.modules,
-          });
-          const bootstrapMainCode = `${bootstrapCode}${
-            this.#options?.restricted ? bootstrapRestrictedCode : ""
-          }`;
+        hooks: {
+          main: {
+            onReady: async (wrap) => {
+              const bootstrapModulesCode = writePythonFiles({
+                ...runtimeModule,
+                ...this.#options?.modules,
+              });
+              const bootstrapMainCode = `${bootstrapCode}${
+                this.#options?.restricted ? bootstrapRestrictedCode : ""
+              }`;
 
-          await wrap.interpreter.runPythonAsync(
-            `${bootstrapModulesCode}${bootstrapMainCode}`,
-          );
+              await wrap.interpreter.runPythonAsync(
+                `${bootstrapModulesCode}${bootstrapMainCode}`,
+              );
 
-          const jsApi = {
-            display,
-            ...this.#options?.jsApi,
-          };
+              const jsApi = {
+                display,
+                ...this.#options?.jsApi,
+              };
 
-          if (this.#options?.restricted) {
-            wrap.interpreter.unregisterJsModule("js");
-            wrap.interpreter.registerJsModule("js", {
-              Object,
-              fetch: window.fetch.bind(window),
-              clearInterval: window.clearInterval.bind(window),
-              clearTimeout: window.clearTimeout.bind(window),
-              setInterval: window.setInterval.bind(window),
-              setTimeout: window.setTimeout.bind(window),
-              ...jsApi,
-            });
-          } else {
-            for (const api of Object.keys(jsApi)) {
-              globalThis[api] = jsApi[api];
-            }
-          }
-          this.#wrap = wrap;
-          resolve(wrap);
+              if (this.#options?.restricted) {
+                wrap.interpreter.unregisterJsModule("js");
+                wrap.interpreter.registerJsModule("js", {
+                  Object,
+                  fetch: window.fetch.bind(window),
+                  clearInterval: window.clearInterval.bind(window),
+                  clearTimeout: window.clearTimeout.bind(window),
+                  setInterval: window.setInterval.bind(window),
+                  setTimeout: window.setTimeout.bind(window),
+                  ...jsApi,
+                });
+              } else {
+                for (const api of Object.keys(jsApi)) {
+                  globalThis[api] = jsApi[api];
+                }
+              }
+              this.#wrap = wrap;
+              resolve(wrap);
+            },
+          },
         },
         ...options,
       });
@@ -76,17 +80,7 @@ export class PyMainThreadSandbox implements ISandbox {
     await this.#wrap.interpreter.loadPackage("micropip");
     const micropip = await this.#wrap.interpreter.pyimport("micropip");
     try {
-      if (options?.keep_going) {
-        for (const pkg of packages) {
-          try {
-            await micropip.install(pkg);
-          } catch (e) {
-            console.error(e);
-          }
-        }
-      } else {
-        await micropip.install(packages);
-      }
+      await micropip.install(packages, options);
     } finally {
       micropip.destroy();
     }

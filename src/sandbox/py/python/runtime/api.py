@@ -8,14 +8,7 @@ import importlib
 
 async def micropip_install(packages, id, keep_going=False):
     try:
-        if keep_going:
-            for package in packages:
-                try:
-                    await micropip.install(package)
-                except Exception as e:
-                    print(e, file=sys.stderr)
-        else:
-            await micropip.install(packages)
+        await micropip.install(packages, keep_going=keep_going)
     except Exception as e:
         if id:
             print(e, file=sys.stderr)
