@@ -33,9 +33,11 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
+    "format:all": "yarn format && yarn format:py",
     "format:js": "prettier -w src",
-    "format:py": "black src",
-    "format": "yarn format:js && yarn format:py",
+    "format:py": "black src serve.py",
+    "format:scripts": "prettier -w .github/workflows *.mjs *.ts *.md",
+    "format": "yarn format:js && yarn format:scripts",
     "serve": "python serve.py",
     "prepare": "husky install",
     "prepublish": "yarn build",
