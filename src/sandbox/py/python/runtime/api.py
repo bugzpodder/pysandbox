@@ -2,6 +2,7 @@ import sys
 import js
 import micropip
 import pyodide
+import pyodide_js
 import os
 import importlib
 
@@ -62,11 +63,16 @@ async def format_code(code, id):
 
 
 def find_imports(code):
-    return [
+    packages = [
         package
         for package in pyodide.code.find_imports(code)
         if importlib.util.find_spec(package) is None
     ]
+    importMapper = pyodide_js._api and pyodide_js._api._import_name_to_package_name
+    if importMapper:
+        return [importMapper.get(package) or package for package in packages]
+    else:
+        return packages
 
 
 __all__ = [

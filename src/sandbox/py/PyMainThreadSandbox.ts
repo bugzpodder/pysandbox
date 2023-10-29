@@ -89,11 +89,14 @@ export class PyMainThreadSandbox implements ISandbox {
   async findImports(code: string) {
     const pyodideModule = await this.#wrap.interpreter.pyimport("pyodide");
     const importlib = await this.#wrap.interpreter.pyimport("importlib");
+    const importMapper =
+      this.#wrap.interpreter._api?._import_name_to_package_name;
 
     try {
       return pyodideModule.code
         .find_imports(code)
-        .filter((pkg) => !importlib.util.find_spec(pkg));
+        .filter((pkg) => !importlib.util.find_spec(pkg))
+        .map((name) => importMapper?.get(name) ?? name);
     } finally {
       pyodideModule.destroy();
       importlib.destroy();
