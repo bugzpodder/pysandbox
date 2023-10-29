@@ -11,7 +11,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier -w src src/**/*.astro"
+    "format": "prettier -w src src/**/*.astro *.mjs *.js *.json"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.10.0",
