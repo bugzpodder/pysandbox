@@ -1,0 +1,15 @@
+{
+  "git": {
+    "requireBranch": "main"
+  },
+  "hooks": {
+    "before:init": ["git pull", "yarn format"],
+    "after:bump": "auto-changelog -p"
+  },
+  "github": {
+    "release": true
+  },
+  "npm": {
+    "publish": true
+  }
+}

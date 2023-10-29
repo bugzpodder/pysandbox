@@ -33,19 +33,23 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "format": "prettier -w src",
+    "format:js": "prettier -w src",
     "format:py": "black src",
+    "format": "yarn format:js && yarn format:py",
     "serve": "python serve.py",
     "prepare": "husky install",
     "prepublish": "yarn build",
+    "release": "release-it",
     "test": "playwright test"
   },
   "devDependencies": {
     "@playwright/test": "^1.38.1",
+    "auto-changelog": "^2.4.0",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "playwright": "^1.38.1",
     "prettier": "^3.0.3",
+    "release-it": "^16.2.1",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
   },
