@@ -18,6 +18,7 @@ export default defineConfig({
         github: "https://github.com/bugzpodder/pysandbox",
         discord: "https://discord.gg/BYB2kvyFwm",
       },
+      customCss: ["./src/styles/custom.css"],
       sidebar: [
         {
           label: "Guides",

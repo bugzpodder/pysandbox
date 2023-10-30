@@ -1,0 +1,49 @@
+<script src="/pysandbox/coi-serviceworker.min.js" is:inline></script>
+<link rel="stylesheet" href="/pysandbox/xterm.css" />
+<script>
+  import { Readline } from "xterm-readline";
+  import { FitAddon } from "xterm-addon-fit";
+
+  const rl = new Readline();
+  rl.setCheckHandler((text) => !text.trimEnd().endsWith("&&"));
+
+  import { Terminal } from "xterm";
+  const term = new Terminal({ cursorBlink: true });
+  term.loadAddon(rl);
+  const fitAddon = new FitAddon();
+  term.loadAddon(fitAddon);
+  term.open(document.getElementById("terminal")!);
+  fitAddon.fit();
+  term.focus();
+
+  import { PyWorkerSandbox } from "pysandbox";
+  const sandbox = new PyWorkerSandbox({
+    jsApi: {
+      readline: (prompt: string) => rl.read(prompt),
+      write: (lines: string) => {
+        lines
+          .split("\n")
+          .map((line) => line.trim() && term.writeln(String(line)));
+      },
+    },
+  });
+  await sandbox.init();
+  await sandbox.exec(`###### magic monkey patching ######
+import builtins
+import sys
+
+from pyodide.code import eval_code
+from polyscript.xworker import sync
+
+sys.stdout = sync
+sys.stderr = sync
+builtins.input = sync.readline
+
+####### main code ######
+import code
+
+code.interact()
+`);
+</script>
+
+<div id="terminal" style="height: 300px;"></div>

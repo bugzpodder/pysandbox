@@ -900,6 +900,11 @@
   resolved "https://registry.yarnpkg.com/@ungap/with-resolvers/-/with-resolvers-0.1.0.tgz#63a07b13bbf10ffff074a36498cce8d82aeeecc4"
   integrity sha512-g7f0IkJdPW2xhY7H4iE72DAsIyfuwEFc6JWc2tYFwKDMWWAF699vGjrM348cwQuOXgHpe1gWFe+Eiyjx/ewvvw==
 
+"@xterm/addon-fit@^0.9.0-beta.1":
+  version "0.9.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@xterm/addon-fit/-/addon-fit-0.9.0-beta.1.tgz#db1580c99e8b46f05d4006e7315dfe5f50215ddc"
+  integrity sha512-HmGRUMMamUpQYuQBF2VP1LJ0xzqF85LMFfpaNu84t1Tsrl1lPKJWtqX9FDZ22Rf5q6bnKdbj44TRVAUHgDRbLA==
+
 acorn-jsx@^5.0.0:
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-5.3.2.tgz#7ed5bb55908b3b2f1bc55c6af1653bada7f07937"
@@ -3620,7 +3625,7 @@ streamx@^2.15.0:
     fast-fifo "^1.1.0"
     queue-tick "^1.0.1"
 
-string-width@^4.1.0:
+string-width@^4.0.0, string-width@^4.1.0:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -4091,6 +4096,23 @@ ws@^8.14.2:
   version "8.14.2"
   resolved "https://registry.yarnpkg.com/ws/-/ws-8.14.2.tgz#6c249a806eb2db7a20d26d51e7709eab7b2e6c7f"
   integrity sha512-wEBG1ftX4jcglPxgFCMJmZ2PLtSbJ2Peg6TmpJFTbe9GZYOQCDPdMYu/Tm0/bGZkw8paZnJY45J4K2PZrLYq8g==
+
+xterm-addon-fit@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/xterm-addon-fit/-/xterm-addon-fit-0.8.0.tgz#48ca99015385141918f955ca7819e85f3691d35f"
+  integrity sha512-yj3Np7XlvxxhYF/EJ7p3KHaMt6OdwQ+HDu573Vx1lRXsVxOcnVJs51RgjZOouIZOczTsskaS+CpXspK81/DLqw==
+
+xterm-readline@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/xterm-readline/-/xterm-readline-1.1.1.tgz#781dacf883283cfec1a7845fae50beba3716aa04"
+  integrity sha512-f87S2/jKwRZoZTxE2vkPgBCipDl6k6tTkMTb9pmwC4R6XkfR491fWBuToZd/nZasp6seD2u0jdABinUDWsK6dw==
+  dependencies:
+    string-width "^4.0.0"
+
+xterm@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/xterm/-/xterm-5.3.0.tgz#867daf9cc826f3d45b5377320aabd996cb0fce46"
+  integrity sha512-8QqjlekLUFTrU6x7xck1MsPzPA571K5zNqWm0M0oroYEWVOptZ0+ubQSkQ3uxIEhcIHRujJy6emDWX4A7qyFzg==
 
 yallist@^3.0.2:
   version "3.1.1"
