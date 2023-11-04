@@ -10,59 +10,63 @@ import bootstrapRestrictedCode from "./python/main/bootstrap_restricted.py";
 export class PyMainThreadSandbox implements ISandbox {
   #wrap: any;
   #options?: PySandboxOptions;
+  #initPromise_?: Promise<any>;
   constructor(options?: PySandboxOptions) {
     this.#options = options;
   }
 
   async init(options?: Record<string, any>) {
-    return new Promise((resolve, reject) => {
-      define(null, {
-        interpreter: "pyodide",
-        config: JSON.stringify({ packages: this.#options?.packages || [] }),
-        hooks: {
-          main: {
-            onReady: async (wrap) => {
-              const bootstrapModulesCode = writePythonFiles({
-                ...runtimeModule,
-                ...this.#options?.modules,
-              });
-              const bootstrapMainCode = `${bootstrapCode}${
-                this.#options?.restricted ? bootstrapRestrictedCode : ""
-              }`;
-
-              await wrap.interpreter.runPythonAsync(
-                `${bootstrapModulesCode}${bootstrapMainCode}`,
-              );
-
-              const jsApi = {
-                display,
-                ...this.#options?.jsApi,
-              };
-
-              if (this.#options?.restricted) {
-                wrap.interpreter.unregisterJsModule("js");
-                wrap.interpreter.registerJsModule("js", {
-                  Object,
-                  fetch: window.fetch.bind(window),
-                  clearInterval: window.clearInterval.bind(window),
-                  clearTimeout: window.clearTimeout.bind(window),
-                  setInterval: window.setInterval.bind(window),
-                  setTimeout: window.setTimeout.bind(window),
-                  ...jsApi,
+    if (!this.#initPromise_) {
+      this.#initPromise_ = new Promise((resolve) => {
+        define(null, {
+          interpreter: "pyodide",
+          config: JSON.stringify({ packages: this.#options?.packages || [] }),
+          hooks: {
+            main: {
+              onReady: async (wrap) => {
+                const bootstrapModulesCode = writePythonFiles({
+                  ...runtimeModule,
+                  ...this.#options?.modules,
                 });
-              } else {
-                for (const api of Object.keys(jsApi)) {
-                  globalThis[api] = jsApi[api];
+                const bootstrapMainCode = `${bootstrapCode}${
+                  this.#options?.restricted ? bootstrapRestrictedCode : ""
+                }`;
+
+                await wrap.interpreter.runPythonAsync(
+                  `${bootstrapModulesCode}${bootstrapMainCode}`,
+                );
+
+                const jsApi = {
+                  display,
+                  ...this.#options?.jsApi,
+                };
+
+                if (this.#options?.restricted) {
+                  wrap.interpreter.unregisterJsModule("js");
+                  wrap.interpreter.registerJsModule("js", {
+                    Object,
+                    fetch: window.fetch.bind(window),
+                    clearInterval: window.clearInterval.bind(window),
+                    clearTimeout: window.clearTimeout.bind(window),
+                    setInterval: window.setInterval.bind(window),
+                    setTimeout: window.setTimeout.bind(window),
+                    ...jsApi,
+                  });
+                } else {
+                  for (const api of Object.keys(jsApi)) {
+                    globalThis[api] = jsApi[api];
+                  }
                 }
-              }
-              this.#wrap = wrap;
-              resolve(wrap);
+                this.#wrap = wrap;
+                resolve(wrap);
+              },
             },
           },
-        },
-        ...options,
+          ...options,
+        });
       });
-    });
+    }
+    return this.#initPromise_;
   }
 
   async exec(code: string, target?: string) {
