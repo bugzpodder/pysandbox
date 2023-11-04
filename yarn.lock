@@ -769,14 +769,14 @@ codedent@^0.1.2:
   dependencies:
     plain-tag "^0.1.3"
 
-coincident@^0.14.2:
-  version "0.14.2"
-  resolved "https://registry.yarnpkg.com/coincident/-/coincident-0.14.2.tgz#33d032bc9ed0cb6700e8d9912cb5240187307f7c"
-  integrity sha512-Xc/lh56dl/v5GT1R3bEWxiLzF5ZTiXE5Flcd0+qvrBGhZsvDha8bgqhpocrvJmELuerhDO3+EQKDdCzPBPodJQ==
+coincident@^0.14.3:
+  version "0.14.3"
+  resolved "https://registry.yarnpkg.com/coincident/-/coincident-0.14.3.tgz#cc52515093188d66e008f263d6fcb4d9f3a6707c"
+  integrity sha512-vd5xP+d5vCCcwTTUxQb3LHRi+dhXnuD+Bgjyf1r1H0IPjfXGDs3z2C4RZJifCJmokqf3Ff9BiFealewTBMTgYw==
   dependencies:
     "@ungap/structured-clone" "^1.2.0"
     "@ungap/with-resolvers" "^0.1.0"
-    gc-hook "^0.2.1"
+    gc-hook "^0.2.3"
   optionalDependencies:
     ws "^8.14.2"
 
@@ -1311,7 +1311,7 @@ functions-have-names@^1.2.3:
   resolved "https://registry.yarnpkg.com/functions-have-names/-/functions-have-names-1.2.3.tgz#0404fe4ee2ba2f607f0e0ec3c80bae994133b834"
   integrity sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
 
-gc-hook@^0.2.1:
+gc-hook@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/gc-hook/-/gc-hook-0.2.3.tgz#4a7c3d199fd33880d04c38ed26f0cf9199fcc80f"
   integrity sha512-XfA+XiE7QzJzonfvNjTXmcyGtprD6m85KEH9fngmxghVR7PJ4f3ZKsLI22QNpWJiDO5EIR6iMzz9wSxLBqw6+A==
@@ -2543,16 +2543,16 @@ playwright@1.38.1, playwright@^1.38.1:
   optionalDependencies:
     fsevents "2.3.2"
 
-polyscript@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/polyscript/-/polyscript-0.5.0.tgz#1c703efd427cc511b1c1b72b097834b548fef10a"
-  integrity sha512-PkClZsFSBDJpSkRIqv5CT0iOu97MZ0D3dQntjveM7I79m8/mKr6RlgEZQIhy9nHROItqR6QBIeIUFTTESzRJFA==
+polyscript@^0.5.7:
+  version "0.5.7"
+  resolved "https://registry.yarnpkg.com/polyscript/-/polyscript-0.5.7.tgz#ec54798fabc52f044942fe5b8eea149ea1cb76f2"
+  integrity sha512-MEJJXWaP3Zgn2Jj7+lcoZkKl0Ruh5xN9UNJy305FnHDv3Y+9JCSg8g1+Pb+KWd7tqhXQ0e9FJ/eJCL33yuKhQg==
   dependencies:
     "@ungap/structured-clone" "^1.2.0"
     "@ungap/with-resolvers" "^0.1.0"
     basic-devtools "^0.1.6"
     codedent "^0.1.2"
-    coincident "^0.14.2"
+    coincident "^0.14.3"
     html-escaper "^3.0.3"
     sticky-module "^0.1.0"
 
