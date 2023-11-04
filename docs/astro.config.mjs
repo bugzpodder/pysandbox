@@ -26,8 +26,9 @@ export default defineConfig({
             // Each item here is one entry in the navigation menu.
             { label: "Introduction", link: "guides/introduction" },
             { label: "Comparison", link: "guides/comparison" },
-            { label: "Examples", link: "guides/examples" },
+            { label: "Demo", link: "guides/demo" },
             { label: "Installation", link: "guides/installation" },
+            { label: "React Integration", link: "guides/react" },
           ],
         },
         { label: "Documentation", autogenerate: { directory: "references" } },

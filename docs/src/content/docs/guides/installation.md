@@ -9,7 +9,7 @@ Usage in html:
 
 ```html
 <script type="module">
-  import { PyMainThreadSandbox } from "https://esm.sh/pysandbox@latest/";
+  import { PyMainThreadSandbox } from "https://esm.sh/pysandbox@latest";
   const sandbox = new PyMainThreadSandbox();
   await sandbox.init();
   await sandbox.exec("display('Hello', target=current_target())", "output");

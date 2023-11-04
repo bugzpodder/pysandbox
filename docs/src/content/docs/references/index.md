@@ -7,7 +7,7 @@ The `pysandbox` library exports two classes: `PyMainThreadSandbox` and `PyWorker
 
 `PyMainThreadSandbox` will execute python code on the main thread while `PyWorkerSandbox` will execute python code in a web worker if [crossOriginIsolated](https://web.dev/coop-coep/).
 
-Both classes shares an identical interface.
+Both classes shares an identical interface and can be instantiated by passing in [PySandboxOptions](/pysandbox/references/options).
 
 ```js
 interface ISandbox {

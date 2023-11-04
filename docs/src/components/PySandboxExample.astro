@@ -20,13 +20,13 @@ const { code, target, worker, restricted } = Astro.props;
   }
 </style>
 
-<div style="border: 1px solid; padding: 4px; margin-bottom: 4px;">
-  Output:<div id={target} style="min-height: 500px"></div>
-</div>
-
 <div id="code-editor" style="margin-bottom: 1.5rem; height: 300px"></div>
 <button class="format">Format Code</button>
 <button class="run" style="margin-left: 4px">Run code</button>
+
+<div style="border: 1px solid; padding: 4px; margin-top: 4px;">
+  Output:<div id={target} style="min-height: 500px"></div>
+</div>
 
 <pysandbox-example
   data-code={code}
