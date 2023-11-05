@@ -13,7 +13,8 @@ jobs:
         with:
           node-version: "18.x"
       - run: yarn install
-      - run: yarn format
+      - run: yarn workspace pysandbox format
+      - run: yarn workspace docs format
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:

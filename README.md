@@ -17,12 +17,16 @@ The main features of PySandbox are:
 
 ## Contributing
 
-Project bootstraped with `tsup` and `esbuild`. `Node.js 16.x/18.x` is recommended for development.
+Project bootstraped with `tsup` and `esbuild`. `Node.js 18.x` is recommended for development.
+
+`/packages/pysandbox`: The core `pysandbox` package.
 
 `yarn dev` to make changes and make development build
 
 `yarn serve` to serve `/examples` for testing your changes
 
 `yarn format` & `yarn format:py` to run code formatting
+
+`/packages/docs`: Documentation site built via Astro.
 
 `/docs` contains documentation. Run `yarn format` in docs to format changes.

@@ -1,4 +1,4 @@
-import { defineConfig, devices } from "@playwright/test";
+import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
   expect: {
@@ -9,7 +9,7 @@ export default defineConfig({
     trace: "on-first-retry",
   },
   webServer: {
-    command: "yarn serve",
+    command: "python serve.py",
     reuseExistingServer: !process.env.CI,
     url: "http://localhost:8000/",
   },

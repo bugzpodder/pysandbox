@@ -16,11 +16,11 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Build pysandbox
-        run: yarn build
+        run: yarn workspace pysandbox build
       - name: Install chromium
-        run: yarn playwright install chromium
+        run: yarn workspace pysandbox playwright install chromium
       - name: Run Playwright tests
-        run: yarn test
+        run: yarn workspace pysandbox test
       - uses: actions/upload-artifact@v3
         if: always()
         with:

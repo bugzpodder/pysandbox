@@ -2,3 +2,12 @@ dist/
 node_modules/
 yarn-error.log
 test-results
+.parcel-cache
+
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

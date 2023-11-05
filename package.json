@@ -1,64 +1,16 @@
 {
-  "name": "pysandbox",
-  "version": "0.5.3",
-  "description": "Run Python in your Web Application",
-  "files": [
-    "dist/*"
-  ],
-  "types": "dist/index.d.ts",
-  "main": "dist/index.cjs.js",
-  "exports": {
-    ".": {
-      "import": "./dist/index.esm.js",
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs.js"
-    }
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bugzpodder/pysandbox.git"
-  },
-  "keywords": [
-    "polyscript",
-    "pyodide",
-    "pyscript",
-    "pysandbox"
-  ],
-  "author": "Jack Zhao",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/bugzpodder/pysandbox/issues"
-  },
-  "homepage": "https://github.com/bugzpodder/pysandbox",
+  "private": true,
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
-    "format:all": "yarn format && yarn format:py",
-    "format:js": "prettier -w src",
-    "format:py": "black src serve.py",
-    "format:scripts": "prettier -w .github/workflows *.mjs *.ts *.md",
-    "format": "yarn format:js && yarn format:scripts",
-    "serve": "python serve.py",
-    "prepare": "husky install",
-    "prepublish": "yarn build",
-    "release": "release-it",
-    "test": "playwright test"
+    "format": "prettier -w *.md"
   },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "packageManager": "yarn@4.0.1",
   "devDependencies": {
-    "@playwright/test": "^1.38.1",
-    "auto-changelog": "^2.4.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^14.0.1",
-    "playwright": "^1.38.1",
-    "prettier": "^3.0.3",
-    "release-it": "^16.2.1",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2"
-  },
-  "dependencies": {
-    "polyscript": "^0.5.7"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
+    "lint-staged": "^15.0.2",
+    "prettier": "^3.0.3"
   }
 }
