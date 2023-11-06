@@ -2805,6 +2805,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"docs@workspace:packages/docs":
+  version: 0.0.0-use.local
+  resolution: "docs@workspace:packages/docs"
+  dependencies:
+    "@astrojs/starlight": "npm:^0.10.0"
+    "@codemirror/lang-python": "npm:^6.1.3"
+    "@xterm/addon-fit": "npm:^0.9.0-beta.1"
+    astro: "npm:^3.0.6"
+    codemirror: "npm:^6.0.1"
+    prettier: "npm:^3.0.3"
+    prettier-plugin-astro: "npm:^0.12.0"
+    pysandbox: "npm:*"
+    xterm: "npm:^5.3.0"
+    xterm-addon-fit: "npm:^0.8.0"
+    xterm-readline: "npm:^1.1.1"
+  languageName: unknown
+  linkType: soft
+
 "dot-prop@npm:^6.0.1":
   version: 6.0.1
   resolution: "dot-prop@npm:6.0.1"
@@ -7440,24 +7458,6 @@ __metadata:
   checksum: 02afa6e4547a733484206aaa8f8eb3fbfb12d3dd17d7ca4fa1ea390a7da2cb8f381e38868bbf68009c4d372f8f6059f553171b6a712d8f2802c7cd43d513f06c
   languageName: node
   linkType: hard
-
-"pysandbox-docs@workspace:packages/docs":
-  version: 0.0.0-use.local
-  resolution: "pysandbox-docs@workspace:packages/docs"
-  dependencies:
-    "@astrojs/starlight": "npm:^0.10.0"
-    "@codemirror/lang-python": "npm:^6.1.3"
-    "@xterm/addon-fit": "npm:^0.9.0-beta.1"
-    astro: "npm:^3.0.6"
-    codemirror: "npm:^6.0.1"
-    prettier: "npm:^3.0.3"
-    prettier-plugin-astro: "npm:^0.12.0"
-    pysandbox: "npm:*"
-    xterm: "npm:^5.3.0"
-    xterm-addon-fit: "npm:^0.8.0"
-    xterm-readline: "npm:^1.1.1"
-  languageName: unknown
-  linkType: soft
 
 "pysandbox@npm:*, pysandbox@workspace:packages/pysandbox":
   version: 0.0.0-use.local

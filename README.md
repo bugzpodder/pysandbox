@@ -21,12 +21,9 @@ Project bootstraped with `tsup` and `esbuild`. `Node.js 18.x` is recommended for
 
 `/packages/pysandbox`: The core `pysandbox` package.
 
-`yarn dev` to make changes and make development build
+- `yarn dev` to watch for changes and update build in `dist/`
+- `yarn test` to run `playwright` tests against `examples/`
 
-`yarn serve` to serve `/examples` for testing your changes
+`/packages/docs`: Documentation site built via [Astro](https://astro.build/).
 
-`yarn format` & `yarn format:py` to run code formatting
-
-`/packages/docs`: Documentation site built via Astro.
-
-`/docs` contains documentation. Run `yarn format` in docs to format changes.
+- `yarn dev` to start an Astro development server
