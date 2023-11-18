@@ -2318,18 +2318,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"coincident@npm:^0.14.3":
-  version: 0.14.3
-  resolution: "coincident@npm:0.14.3"
+"coincident@npm:^0.14.4":
+  version: 0.14.4
+  resolution: "coincident@npm:0.14.4"
   dependencies:
     "@ungap/structured-clone": "npm:^1.2.0"
     "@ungap/with-resolvers": "npm:^0.1.0"
-    gc-hook: "npm:^0.2.3"
+    gc-hook: "npm:^0.2.4"
     ws: "npm:^8.14.2"
   dependenciesMeta:
     ws:
       optional: true
-  checksum: 833b8c995a2c0cc3dedfa68adb9d6d4bb48e3cf0058e58f93c1f031c910790b1b90acea36f1a7ff493ad4c7cd3765bba39c08cc68ccd73c6a5eff18795d7abcb
+  checksum: 54e02091319a4c71dbc896060a555941ada0e64236abfa4997b68b46c6d8b5e56f44919225a3f42d3ef8c829dc72f1ef735477ae6e53e25fff327a64623b6a5a
   languageName: node
   linkType: hard
 
@@ -3682,10 +3682,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gc-hook@npm:^0.2.3":
-  version: 0.2.3
-  resolution: "gc-hook@npm:0.2.3"
-  checksum: 614366013b7c61ce9d8c71b3d08830f0a93115aa0f9de2a04d547e4524c8910265f7fb00aae5b6460ff5bfe977c0a98cf7eb6b195eacbc0a564f1a7b2c4aa30e
+"gc-hook@npm:^0.2.4":
+  version: 0.2.5
+  resolution: "gc-hook@npm:0.2.5"
+  checksum: aa8d84202c3d2c2cab30895e1fe1c5071381aafc14637ab640f378fa867383a89f644e0fe6060736d853e8375944c51f51f4b7717779e130e8e669c631aad01b
   languageName: node
   linkType: hard
 
@@ -7232,18 +7232,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"polyscript@npm:^0.5.7":
-  version: 0.5.7
-  resolution: "polyscript@npm:0.5.7"
+"polyscript@npm:^0.5.12":
+  version: 0.5.12
+  resolution: "polyscript@npm:0.5.12"
   dependencies:
     "@ungap/structured-clone": "npm:^1.2.0"
     "@ungap/with-resolvers": "npm:^0.1.0"
     basic-devtools: "npm:^0.1.6"
     codedent: "npm:^0.1.2"
-    coincident: "npm:^0.14.3"
+    coincident: "npm:^0.14.4"
     html-escaper: "npm:^3.0.3"
-    sticky-module: "npm:^0.1.0"
-  checksum: 6220a0ba0831e29e6f018fa972b77b9949c6b77629f543abdf80d303ead268b7b570b8f18c068d42edaa5f960027b81bc91589e8fa33d36eddff62a53b349787
+    sticky-module: "npm:^0.1.1"
+  checksum: d2b1debbc5b875a092e244f0b1a2a6b48a18bd97694832111fb6459f5f385bb58576f5090ee00c90d0d3ad1e991b2260a5aaaa02707d48916af1e4432628f58d
   languageName: node
   linkType: hard
 
@@ -7465,9 +7465,8 @@ __metadata:
   dependencies:
     "@playwright/test": "npm:^1.38.1"
     auto-changelog: "npm:^2.4.0"
-    husky: "npm:^8.0.3"
     playwright: "npm:^1.38.1"
-    polyscript: "npm:^0.5.7"
+    polyscript: "npm:^0.5.12"
     prettier: "npm:^3.0.3"
     release-it: "npm:^16.2.1"
     statikk: "npm:^2.2.0"
@@ -7910,6 +7909,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
+    husky: "npm:^8.0.3"
     lint-staged: "npm:^15.0.2"
     prettier: "npm:^3.0.3"
   languageName: unknown
@@ -8406,10 +8406,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sticky-module@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "sticky-module@npm:0.1.0"
-  checksum: 61aa12805b67d141cb5081e6ec24078057f084d82cd08c78624f2552aab333e4e0441483ed553471402da8311f6f342734d33204a70f746a3ece8089b87bae9d
+"sticky-module@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "sticky-module@npm:0.1.1"
+  checksum: 6ea7f95608f469238d8bdea2a1e716b575619be661bc1a3d12fd68abe034133dcc3dcde81f54541bf660031f1db40ff3d209f1a4ec2eb7651661edc7b6c56296
   languageName: node
   linkType: hard
 
