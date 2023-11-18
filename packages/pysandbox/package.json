@@ -1,6 +1,6 @@
 {
   "name": "pysandbox",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Run Python in your Web Application",
   "files": [
     "dist/*"
@@ -39,10 +39,9 @@
     "format:all": "yarn format && yarn format:py",
     "format:js": "prettier -w src",
     "format:py": "black src serve.py",
-    "format:scripts": "prettier -w .github/workflows *.mjs *.ts",
+    "format:scripts": "prettier -w *.mjs *.ts",
     "format": "yarn format:js && yarn format:scripts",
     "serve": "statikk --port 8000 --coi",
-    "prepare": "husky install",
     "prepublish": "yarn build",
     "release": "release-it",
     "test": "playwright test"
@@ -50,7 +49,6 @@
   "devDependencies": {
     "@playwright/test": "^1.38.1",
     "auto-changelog": "^2.4.0",
-    "husky": "^8.0.3",
     "playwright": "^1.38.1",
     "prettier": "^3.0.3",
     "release-it": "^16.2.1",
@@ -59,7 +57,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "polyscript": "^0.5.7"
+    "polyscript": "^0.5.12"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"

@@ -1236,15 +1236,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xterm/addon-fit@npm:^0.9.0-beta.1":
-  version: 0.9.0-beta.1
-  resolution: "@xterm/addon-fit@npm:0.9.0-beta.1"
-  peerDependencies:
-    xterm: ^5.0.0
-  checksum: 601923bf448659038bcc613f1509250c215094cdec4e3673c0c1702f21d1383e01e63ce1640f6a5bc0812e6136133713edf22667e6ee0e0eb5f9e253eb27bbeb
-  languageName: node
-  linkType: hard
-
 "abbrev@npm:^2.0.0":
   version: 2.0.0
   resolution: "abbrev@npm:2.0.0"
@@ -2042,7 +2033,6 @@ __metadata:
   dependencies:
     "@astrojs/starlight": "npm:^0.10.0"
     "@codemirror/lang-python": "npm:^6.1.3"
-    "@xterm/addon-fit": "npm:^0.9.0-beta.1"
     astro: "npm:^3.0.6"
     codemirror: "npm:^6.0.1"
     prettier: "npm:^3.0.3"
