@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v3
-      - run: yarn install
+      - run: yarn install && yarn workspace pysandbox build
       - name: Install, build, and upload your site
         uses: withastro/action@v0
         with:
