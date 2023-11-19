@@ -1,6 +1,6 @@
 {
   "name": "pysandbox",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "description": "Run Python in your Web Application",
   "files": [
     "dist/*"
