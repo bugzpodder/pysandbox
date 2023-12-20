@@ -57,7 +57,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "polyscript": "^0.5.12"
+    "polyscript": "^0.6.7"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"

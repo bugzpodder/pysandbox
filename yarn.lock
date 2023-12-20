@@ -2298,18 +2298,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"coincident@npm:^0.14.4":
-  version: 0.14.4
-  resolution: "coincident@npm:0.14.4"
+"coincident@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "coincident@npm:1.1.0"
   dependencies:
     "@ungap/structured-clone": "npm:^1.2.0"
     "@ungap/with-resolvers": "npm:^0.1.0"
-    gc-hook: "npm:^0.2.4"
+    gc-hook: "npm:^0.2.5"
+    proxy-target: "npm:^3.0.1"
     ws: "npm:^8.14.2"
   dependenciesMeta:
     ws:
       optional: true
-  checksum: 54e02091319a4c71dbc896060a555941ada0e64236abfa4997b68b46c6d8b5e56f44919225a3f42d3ef8c829dc72f1ef735477ae6e53e25fff327a64623b6a5a
+  checksum: 3dbecc16316e7086d1d238c6a3ffbf11ee3399616b8413c9e3d2187706c353469b2736aabcee0570554a4412b2a19af58dd5373cfd3c8f2b86a85f96225d7d06
   languageName: node
   linkType: hard
 
@@ -3674,7 +3675,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gc-hook@npm:^0.2.4":
+"gc-hook@npm:^0.2.5":
   version: 0.2.5
   resolution: "gc-hook@npm:0.2.5"
   checksum: aa8d84202c3d2c2cab30895e1fe1c5071381aafc14637ab640f378fa867383a89f644e0fe6060736d853e8375944c51f51f4b7717779e130e8e669c631aad01b
@@ -7227,18 +7228,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"polyscript@npm:^0.5.12":
-  version: 0.5.12
-  resolution: "polyscript@npm:0.5.12"
+"polyscript@npm:^0.6.7":
+  version: 0.6.7
+  resolution: "polyscript@npm:0.6.7"
   dependencies:
     "@ungap/structured-clone": "npm:^1.2.0"
     "@ungap/with-resolvers": "npm:^0.1.0"
     basic-devtools: "npm:^0.1.6"
     codedent: "npm:^0.1.2"
-    coincident: "npm:^0.14.4"
+    coincident: "npm:^1.1.0"
     html-escaper: "npm:^3.0.3"
+    proxy-target: "npm:^3.0.1"
     sticky-module: "npm:^0.1.1"
-  checksum: d2b1debbc5b875a092e244f0b1a2a6b48a18bd97694832111fb6459f5f385bb58576f5090ee00c90d0d3ad1e991b2260a5aaaa02707d48916af1e4432628f58d
+  checksum: 705f1e9e297061904c86634bf2c407a42f64f62511c7e35cdc196592f9a373a0fdffe63ad3ed89cd6febbe7625c00aaa66ca2e1f42cbc8120f440317122156a6
   languageName: node
   linkType: hard
 
@@ -7428,6 +7430,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"proxy-target@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "proxy-target@npm:3.0.1"
+  checksum: 6a47aaf42bc15ffa8a3cac410771c95e4f9550e4a357ee0f762cf54445e86cd2c4a407ec6478dda34cefa62bf2cf6c0698ec5354bc6441bd57f7956d2f717e76
+  languageName: node
+  linkType: hard
+
 "pump@npm:^3.0.0":
   version: 3.0.0
   resolution: "pump@npm:3.0.0"
@@ -7461,7 +7470,7 @@ __metadata:
     "@playwright/test": "npm:^1.38.1"
     auto-changelog: "npm:^2.4.0"
     playwright: "npm:^1.38.1"
-    polyscript: "npm:^0.5.12"
+    polyscript: "npm:^0.6.7"
     prettier: "npm:^3.0.3"
     release-it: "npm:^17.0.0"
     statikk: "npm:^2.2.0"
