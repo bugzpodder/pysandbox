@@ -41,23 +41,23 @@
     "format:py": "black src serve.py",
     "format:scripts": "prettier -w *.mjs *.ts",
     "format": "yarn format:js && yarn format:scripts",
-    "serve": "statikk --port 8000 --coi",
+    "serve": "python serve.py",
     "prepublish": "yarn build",
     "release": "release-it",
     "test": "playwright test"
   },
   "devDependencies": {
-    "@playwright/test": "^1.41.2",
+    "@playwright/test": "^1.44.0",
     "auto-changelog": "^2.4.0",
-    "playwright": "^1.41.2",
+    "jsr": "^0.12.4",
+    "playwright": "^1.44.0",
     "prettier": "^3.2.5",
-    "release-it": "^17.0.5",
-    "statikk": "^2.2.0",
+    "release-it": "^17.3.0",
     "tsup": "^8.0.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.5"
   },
   "dependencies": {
-    "polyscript": "^0.9.0"
+    "polyscript": "^0.12.10"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
