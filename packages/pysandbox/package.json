@@ -47,17 +47,17 @@
     "test": "playwright test"
   },
   "devDependencies": {
-    "@playwright/test": "^1.44.0",
-    "auto-changelog": "^2.4.0",
-    "jsr": "^0.12.4",
-    "playwright": "^1.44.0",
-    "prettier": "^3.2.5",
-    "release-it": "^17.3.0",
-    "tsup": "^8.0.2",
-    "typescript": "^5.4.5"
+    "@playwright/test": "^1.49.1",
+    "auto-changelog": "^2.5.0",
+    "jsr": "^0.13.2",
+    "playwright": "^1.49.1",
+    "prettier": "^3.4.2",
+    "release-it": "^17.11.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
   },
   "dependencies": {
-    "polyscript": "^0.12.10"
+    "polyscript": "^0.16.10"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"

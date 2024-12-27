@@ -1,6 +1,5 @@
 import sys
 import js
-import micropip
 import pyodide
 import pyodide_js
 import os
@@ -9,6 +8,9 @@ import importlib
 
 async def micropip_install(packages, id, keep_going=False):
     try:
+        await pyodide_js.loadPackage("micropip")
+        import micropip
+
         await micropip.install(packages, keep_going=keep_going)
     except Exception as e:
         if id:
@@ -46,7 +48,7 @@ async def format_code(code, id):
     await micropip_install(["black"], id)
     import black
 
-    BLACK_MODE = black.Mode(target_versions={black.TargetVersion.PY311})
+    BLACK_MODE = black.Mode(target_versions={black.TargetVersion.PY312})
 
     try:
         code = black.format_file_contents(code, fast=False, mode=BLACK_MODE)

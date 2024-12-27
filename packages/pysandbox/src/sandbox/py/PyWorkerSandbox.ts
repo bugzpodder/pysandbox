@@ -62,11 +62,10 @@ export class PyWorkerSandbox implements ISandbox {
         }
         pyworker.sync.jsExports = () => Object.keys(jsApi);
         pyworker.onmessage = (event) => {
-          switch (event.data.get("name")) {
-            case "ready": {
-              this.#sync = pyworker.sync;
-              resolve(pyworker);
-            }
+          if (event.data === "__ready__") {
+            this.#sync = pyworker.sync;
+            resolve(pyworker);
+            return;
           }
         };
       });

@@ -5,7 +5,6 @@ import { PySandboxOptions } from "./types";
 import { ISandbox } from "../../sanbox";
 import bootstrapProgramCode from "./python/main/bootstrap_program.py";
 import bootstrapCode from "./python/main/bootstrap_common.py";
-import bootstrapRestrictedCode from "./python/main/bootstrap_restricted.py";
 
 export class PyMainThreadSandbox implements ISandbox {
   #wrap: any;
@@ -28,9 +27,7 @@ export class PyMainThreadSandbox implements ISandbox {
                   ...runtimeModule,
                   ...this.#options?.modules,
                 });
-                const bootstrapMainCode = `${bootstrapCode}${
-                  this.#options?.restricted ? bootstrapRestrictedCode : ""
-                }`;
+                const bootstrapMainCode = `${bootstrapCode}`;
 
                 await wrap.interpreter.runPythonAsync(
                   `${bootstrapModulesCode}${bootstrapMainCode}`,
